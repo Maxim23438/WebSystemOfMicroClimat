@@ -1,20 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebSystemOfMicroClimat.Data;
+using WebSystemOfMicroClimat.Data.Services;
+using WebSystemOfMicroClimat.Models;
 
 namespace WebSystemOfMicroClimat.Controllers
 {
     public class ValueController : Controller
     {
-        private readonly AppDbContext _context;
-        public ValueController(AppDbContext context)
+        private readonly IValuesService _service;
+        public ValueController(IValuesService service)
         {
-            _context = context;
+            _service = service;
         }
-        public async Task<IActionResult> Index(int userId)
+        public IActionResult Index(int userId)
         {
-            var user = _context.Users.FirstOrDefault(u => u.UserId == userId);
-            var allValues = await _context.Values.ToListAsync();
+            TempData["userId"] = userId;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Index([Bind("Temperature")] int userId,Value value) {
+            userId = (int)TempData["userId"];
+            Console.WriteLine(userId);
             return View();
         }
     }

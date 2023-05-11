@@ -1,8 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Value
 
 <link rel="stylesheet" href="~/css/ClimatStyle.css" asp-append-version="true" />
 <body class="body">
@@ -18,9 +14,9 @@
         <main>
             <section>
                 <h2>Температура</h2>
-                <form id="temperature-form">
-                    <input type="number" id="temperature" name="temperature" placeholder="Змініть температуру в приміщенні:">
-                    <input type="submit" value="Зберегти">
+                <form id="temperature-form" asp-action="Index">
+                    <input asp-for="Temperature" type="number" id="temperature" name="temperature" placeholder="Змініть температуру в приміщенні:">
+                    <button type="submit" value="Index">Зберегти</button>
                 </form>
             </section>
             <section>

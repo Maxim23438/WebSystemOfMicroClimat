@@ -7,11 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="obj\Debug\net7.0\.NETCoreApp,Version=v7.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net7.0\WebSystemOfMicroClimat.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net7.0\WebSystemOfMicroClimat.GlobalUsings.g.cs" />
+    <Compile Include="obj\Debug\net7.0\WebSystemOfMicroClimat.MvcApplicationPartsAssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net7.0\WebSystemOfMicroClimat.RazorAssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="bin\Debug\net7.0\appsettings.Development.json" />
     <Content Include="bin\Debug\net7.0\appsettings.json" />
     <Content Include="bin\Debug\net7.0\WebSystemOfMicroClimat.deps.json" />
     <Content Include="bin\Debug\net7.0\WebSystemOfMicroClimat.runtimeconfig.json" />
     <Content Include="bin\Debug\net7.0\WebSystemOfMicroClimat.staticwebassets.runtime.json" />
+    <Content Include="obj\Debug\net7.0\project.razor.vs.json" />
+    <Content Include="obj\Debug\net7.0\scopedcss\bundle\WebSystemOfMicroClimat.styles.css" />
+    <Content Include="obj\Debug\net7.0\scopedcss\projectbundle\WebSystemOfMicroClimat.bundle.scp.css" />
+    <Content Include="obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css" />
+    <Content Include="obj\Debug\net7.0\staticwebassets.build.json" />
+    <Content Include="obj\Debug\net7.0\staticwebassets.development.json" />
+    <Content Include="obj\Debug\net7.0\staticwebassets.pack.json" />
+    <Content Include="obj\Debug\net7.0\WebSystemOfMicroClimat.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\project.assets.json" />
+    <Content Include="obj\WebSystemOfMicroClimat.csproj.nuget.dgspec.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -70,6 +88,28 @@
     <None Include="bin\Debug\net7.0\WebSystemOfMicroClimat.dll" />
     <None Include="bin\Debug\net7.0\WebSystemOfMicroClimat.exe" />
     <None Include="bin\Debug\net7.0\WebSystemOfMicroClimat.pdb" />
+    <None Include="obj\Debug\net7.0\apphost.exe" />
+    <None Include="obj\Debug\net7.0\refint\WebSystemOfMicroClimat.dll" />
+    <None Include="obj\Debug\net7.0\ref\WebSystemOfMicroClimat.dll" />
+    <None Include="obj\Debug\net7.0\staticwebassets\msbuild.build.WebSystemOfMicroClimat.props" />
+    <None Include="obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.WebSystemOfMicroClimat.props" />
+    <None Include="obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.WebSystemOfMicroClimat.props" />
+    <None Include="obj\Debug\net7.0\staticwebassets\msbuild.WebSystemOfMicroClimat.Microsoft.AspNetCore.StaticWebAssets.props" />
+    <None Include="obj\Debug\net7.0\WebSystemOfMicroClimat.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net7.0\WebSystemOfMicroClimat.assets.cache" />
+    <None Include="obj\Debug\net7.0\WebSystemOfMicroClimat.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net7.0\WebSystemOfMicroClimat.csproj.BuildWithSkipAnalyzers" />
+    <None Include="obj\Debug\net7.0\WebSystemOfMicroClimat.csproj.CopyComplete" />
+    <None Include="obj\Debug\net7.0\WebSystemOfMicroClimat.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net7.0\WebSystemOfMicroClimat.dll" />
+    <None Include="obj\Debug\net7.0\WebSystemOfMicroClimat.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net7.0\WebSystemOfMicroClimat.genruntimeconfig.cache" />
+    <None Include="obj\Debug\net7.0\WebSystemOfMicroClimat.MvcApplicationPartsAssemblyInfo.cache" />
+    <None Include="obj\Debug\net7.0\WebSystemOfMicroClimat.pdb" />
+    <None Include="obj\Debug\net7.0\WebSystemOfMicroClimat.RazorAssemblyInfo.cache" />
+    <None Include="obj\project.nuget.cache" />
+    <None Include="obj\WebSystemOfMicroClimat.csproj.nuget.g.props" />
+    <None Include="obj\WebSystemOfMicroClimat.csproj.nuget.g.targets" />
   </ItemGroup>
 
   <ItemGroup>

@@ -36,5 +36,11 @@ namespace WebSystemOfMicroClimat.Data.Services
         {
             throw new NotImplementedException();
         }
+
+        public User GetUser(string name)
+        {
+            var user = _context.Users.FirstOrDefault(x => x.Name == name);
+            return user;
+        }
     }
 }

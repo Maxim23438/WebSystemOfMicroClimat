@@ -13,6 +13,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 IServiceCollection services = builder.Services;
 services.AddScoped<IUsersService, UsersService>();
+services.AddScoped<IValuesService, ValuesService>();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.

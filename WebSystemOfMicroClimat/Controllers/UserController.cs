@@ -46,5 +46,18 @@ namespace WebSystemOfMicroClimat.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Login([Bind("Name,Password")] User user)
+        {
+            var user2 = _service.GetUser(user.Name);
+            if(user2 != null && user2.Password == user.Password) {
+                return RedirectToAction("Index", "Value", new { userId = user.UserId });
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Неправильний логін або пароль";
+                return View();
+            }
+        }
     }
 }

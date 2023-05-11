@@ -11,7 +11,7 @@ using WebSystemOfMicroClimat.Data;
 namespace WebSystemOfMicroClimat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230511103500_Initial")]
+    [Migration("20230511174839_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
