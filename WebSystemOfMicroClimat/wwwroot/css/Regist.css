@@ -1,0 +1,103 @@
+/* Styles for login box */
+body {
+    background-image: url(220620203-630x437-r.jpg);
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.login-box {
+    background-color: #fff;
+    border: 1px solid white;
+    border-radius: 20px;
+    box-shadow: 0px 20px 20px rgba(14, 102, 12, 0.3);
+    margin: 20px auto;
+    max-width: 500px;
+    padding: 20px;
+}
+
+  .login-box h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  /* Styles for form elements */
+  .user-box {
+    position: relative;
+  }
+
+  .user-box input {
+    font-size: 16px;
+    color: #333;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 30px;
+  }
+
+  .user-box label {
+    font-size: 16px;
+    color: #666;
+    pointer-events: none;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    transition: 0.2s ease all;
+  }
+
+  .user-box input:focus ~ label,
+  .user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    font-size: 12px;
+    color: #333;
+    font-weight: bold;
+  }
+
+  /* Styles for checkboxes */
+  input[type="checkbox"] {
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+  }
+
+  label[for="house1"],
+  label[for="house2"],
+  label[for="house3"] {
+    margin-right: 15px;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+  }
+
+  /* Styles for submit button */
+  button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    background-color: rgba(14, 102, 12, 0.7);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.2s ease;
+  }
+
+    button[type="submit"]:hover {
+        background-color: rgba(14, 102, 12, 0.9);
+    }
+
+  #linkp {
+    font-size: 20px;
+    color: #333;
+    margin-top: 50px;
+    text-align: center;
+  }
+
+a {
+    text-decoration: none;
+    color: rgba(14, 102, 12, 0.8);
+}
+  #textp
+  {
+	font-family: 'Roboto Condensed', sans-serif;
+  }

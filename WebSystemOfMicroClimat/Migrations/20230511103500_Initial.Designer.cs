@@ -11,7 +11,7 @@ using WebSystemOfMicroClimat.Data;
 namespace WebSystemOfMicroClimat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230509213429_Initial")]
+    [Migration("20230511103500_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -36,17 +36,14 @@ namespace WebSystemOfMicroClimat.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Flat")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Flat")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("GreenHouse")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("GreenHouse")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("House")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("House")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -55,9 +52,6 @@ namespace WebSystemOfMicroClimat.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ValueId")
-                        .HasColumnType("int");
 
                     b.HasKey("UserId");
 
@@ -105,8 +99,7 @@ namespace WebSystemOfMicroClimat.Migrations
 
             modelBuilder.Entity("WebSystemOfMicroClimat.Models.User", b =>
                 {
-                    b.Navigation("Value")
-                        .IsRequired();
+                    b.Navigation("Value");
                 });
 #pragma warning restore 612, 618
         }

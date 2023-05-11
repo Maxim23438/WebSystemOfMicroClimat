@@ -11,7 +11,7 @@ namespace WebSystemOfMicroClimat.Data
             {
                 var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
                 context.Database.EnsureCreated();
-                if(!context.Users.Any())
+                if(context.Users.Any())
                 {
                     context.Users.AddRange(new List<User>()
                     {
@@ -20,10 +20,9 @@ namespace WebSystemOfMicroClimat.Data
                             Name = "Maks",
                             Email = "maxim.milinevskiy@gmail.com",
                             Password = "123456",
-                            House = "No",
-                            Flat = "Yes",
-                            GreenHouse = "No",
-                            ValueId = 1
+                            House = false,
+                            Flat = false,
+                            GreenHouse = false
                         }
                     });
                     context.SaveChanges();

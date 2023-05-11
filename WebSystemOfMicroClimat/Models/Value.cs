@@ -10,6 +10,6 @@ namespace WebSystemOfMicroClimat.Models
         public int Humidity { get; set; }
         public int Light { get; set; }
         public int UserId { get; set; }
-        public User User {  get; set; }
+        public User? User {  get; set; }
     }
 }

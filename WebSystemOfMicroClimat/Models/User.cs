@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace WebSystemOfMicroClimat.Models
 {
@@ -9,11 +10,10 @@ namespace WebSystemOfMicroClimat.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string House { get; set; }
-        public string Flat { get; set; }
-        public string GreenHouse { get; set; }
-        public int ValueId { get; set; }
-        public Value Value { get; set; }
+        public  bool House { get; set; }
+        public bool Flat { get; set; }
+        public bool GreenHouse { get; set; }
+        public Value? Value { get; set; }
 
     }
 }

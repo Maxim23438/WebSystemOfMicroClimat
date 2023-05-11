@@ -1,0 +1,42 @@
+﻿@model User
+
+<link rel="stylesheet" href="~/css/Regist.css" asp-append-version="true" />
+<div class="login-box">
+    <h2>Реєстраційна форма</h2>
+    <form asp-action="Create">
+        <div class="user-box">
+            <input asp-for="Name" type="text" name="name" id="name" required="">
+            <label asp-for="Name">Логін</label>
+        </div>
+        <div class="user-box">
+            <input asp-for="Email" type="text" name="email" id="email" required="">
+            <label asp-for="Email">Електрона пошта</label>
+        </div>
+        <div class="user-box">
+            <input asp-for="Password" type="password" name="password" id="password" required="">
+            <label asp-for="Password">Пароль</label>
+        </div>
+        <div>
+            <p id="textp">Оберіть для чого потрібно змінювати мікроклімат(виберіть один із трьох): </p>
+        </div>
+        <div>
+            <input type="checkbox" asp-for="House" id="house1" name="house1">
+            <label asp-for="House"> Будинок</label><br>
+            <input type="checkbox" asp-for="Flat" id="house2" name="house2">
+            <label asp-for="Flat"> Квартира</label><br>
+            <input type="checkbox" asp-for="GreenHouse" id="house3" name="house3">
+            <label asp-for="GreenHouse"> Теплиця</label><br><br>
+        </div>
+            <button type="submit" value="Create">Підтвердити</button>
+        <div>
+            <a asp-controller="Value" asp-action="Index"></a>
+        </div>
+    </form>
+</div>
+<div>
+    <p id="linkp">Вже зареєстровані?Натисніть <a asp-action="Login">тут</a> щоб увійти</p>
+</div>
+@*<script src="~/js/Create.js">
+
+</script>*@
+

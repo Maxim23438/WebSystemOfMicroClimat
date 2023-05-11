@@ -19,10 +19,9 @@ namespace WebSystemOfMicroClimat.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    House = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Flat = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GreenHouse = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ValueId = table.Column<int>(type: "int", nullable: false)
+                    House = table.Column<bool>(type: "bit", nullable: false),
+                    Flat = table.Column<bool>(type: "bit", nullable: false),
+                    GreenHouse = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

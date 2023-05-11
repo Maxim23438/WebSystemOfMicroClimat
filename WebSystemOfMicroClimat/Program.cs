@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebSystemOfMicroClimat.Data;
+using WebSystemOfMicroClimat.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+IServiceCollection services = builder.Services;
+services.AddScoped<IUsersService, UsersService>();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
@@ -25,10 +29,10 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+//AddDbInitializer.Seed(app);
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-AddDbInitializer.Seed(app);
+    pattern: "{controller=User}/{action=Create}/{id?}");
+
 
 app.Run();
