@@ -15,7 +15,6 @@ namespace WebSystemOfMicroClimat.Controllers
         {
             var user = _context.Users.FirstOrDefault(u => u.UserId == userId);
             var allValues = await _context.Values.ToListAsync();
-            Console.WriteLine(userId);
             return View();
         }
     }
