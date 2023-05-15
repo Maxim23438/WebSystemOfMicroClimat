@@ -9,5 +9,7 @@ namespace WebSystemOfMicroClimat.Data.Services
         void Add(Value value);
         Value Update(int id, Value value);
         void Delete(Value value);
+        Value Update2(int id, Value value);
+        Value Update3(int id, Value value);
     }
 }

@@ -51,7 +51,7 @@ namespace WebSystemOfMicroClimat.Controllers
         {
             var user2 = _service.GetUser(user.Name);
             if(user2 != null && user2.Password == user.Password) {
-                return RedirectToAction("Index", "Value", new { userId = user.UserId });
+                return RedirectToAction("Index", "Value", new { userId = user2.UserId });
             }
             else
             {

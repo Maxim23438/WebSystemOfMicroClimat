@@ -20,11 +20,17 @@
             <p id="textp">Оберіть для чого потрібно змінювати мікроклімат(виберіть один із трьох): </p>
         </div>
         <div>
-            <input type="checkbox" asp-for="House" id="house1" name="house1">
+            @*@Html.CheckBox("House",false)
             <label asp-for="House"> Будинок</label><br>
-            <input type="checkbox" asp-for="Flat" id="house2" name="house2">
+            @Html.CheckBox("Flat",false)
             <label asp-for="Flat"> Квартира</label><br>
-            <input type="checkbox" asp-for="GreenHouse" id="house3" name="house3">
+            @Html.CheckBox("GreenHouse",false)
+            <label asp-for="GreenHouse"> Теплиця</label><br><br>*@
+            @Html.CheckBox("House", false, new { @class = "exclusive" })
+            <label asp-for="House"> Будинок</label><br>
+            @Html.CheckBox("Flat", false, new { @class = "exclusive" })
+            <label asp-for="Flat"> Квартира</label><br>
+            @Html.CheckBox("GreenHouse", false, new { @class = "exclusive" })
             <label asp-for="GreenHouse"> Теплиця</label><br><br>
         </div>
             <button type="submit" value="Create">Підтвердити</button>
@@ -36,7 +42,18 @@
 <div>
     <p id="linkp">Вже зареєстровані?Натисніть <a asp-action="Login">тут</a> щоб увійти</p>
 </div>
-@*<script src="~/js/Create.js">
 
-</script>*@
+
+<script>
+    var checkboxes = document.getElementsByClassName("exclusive");
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].addEventListener('click', function () {
+            for (var j = 0; j < checkboxes.length; j++) {
+                if (checkboxes[j] != this) {
+                    checkboxes[j].checked = false;
+                }
+            }
+        });
+    }
+</script>
 

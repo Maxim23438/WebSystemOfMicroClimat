@@ -1,40 +1,41 @@
 ﻿@model Value
-
 <link rel="stylesheet" href="~/css/ClimatStyle.css" asp-append-version="true" />
 <body class="body">
     <nav>
-        <h1><a id="atext" href="Climat.html">Управління мікрокліматом</a></h1>
+        <h1><a asp-controller="Value" asp-action="Index" id="atext">Управління мікрокліматом</a></h1>
         <ul>
-            <li><a href="temperature.html">Температура</a></li>
-            <li><a href="voloha.html">Вологість</a></li>
-            <li><a href="svitlo.html">Освітлення</a></li>
+            <li><a asp-controller="Temp" asp-action="Temp">Темпепатура</a></li>
+            <li><a asp-controller="Humidity" asp-action="Humidity">Вологість</a></li>
+            <li><a asp-controller="Light" asp-action="Light">Світло</a></li>
         </ul>
     </nav>
     <div class="container">
         <main>
             <section>
                 <h2>Температура</h2>
+                <p>Змініть рівень температури в приміщенні:</p>
                 <form id="temperature-form" asp-action="Index">
-                    <input asp-for="Temperature" type="number" id="temperature" name="temperature" placeholder="Змініть температуру в приміщенні:">
+                    <label asp-for="Temperature">Температура:</label>
+                    <input asp-for="Temperature" type="number" id="temperature" name="temperature">
                     <button type="submit" value="Index">Зберегти</button>
                 </form>
             </section>
             <section>
                 <h2>Вологість</h2>
                 <p>Змініть рівень вологості в приміщенні:</p>
-                <form id="humidity-form">
-                    <label for="humidity">Вологість:</label>
-                    <input type="number" id="humidity" name="humidity">
-                    <input type="submit" value="Зберегти">
+                <form id="humidity-form" asp-action="Index2">
+                    <label asp-for="Humidity">Вологість:</label>
+                    <input asp-for="Humidity" type="number" id="humidity" name="humidity">
+                    <button type="submit" value="Index">Зберегти</button>
                 </form>
             </section>
             <section>
                 <h2>Освітлення</h2>
                 <p>Змініть рівень освітлення в приміщенні:</p>
-                <form id="light-form">
-                    <label for="light">Освітлення:</label>
-                    <input type="number" id="light" name="light">
-                    <input type="submit" value="Зберегти">
+                <form id="light-form" asp-action="Index3">
+                    <label asp-for="Light">Освітлення:</label>
+                    <input asp-for="Light" type="number" id="light" name="light">
+                    <button type="submit" value="Index">Зберегти</button>
                 </form>
             </section>
         </main>

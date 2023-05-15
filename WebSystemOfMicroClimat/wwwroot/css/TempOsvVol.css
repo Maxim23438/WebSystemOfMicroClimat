@@ -1,0 +1,244 @@
+﻿.body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(220620203-630x437-r.jpg);
+    margin-bottom: 0px;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+nav {
+    background-color: #f2f2f2;
+    padding: 10px;
+    display: flex;
+    height: 60px;
+}
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav li {
+        display: inline-block;
+        margin-right: 20px;
+        color: #fff;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+    }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+main {
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin: 5%;
+    border-radius: 20px;
+    width: 30%;
+    box-shadow: 0px 20px 20px rgba(14, 102, 12, 0.3);
+}
+
+section {
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+    align-items: center;
+}
+
+input[type="number"] {
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    width: 200px;
+    margin-right: 5px;
+    border-color: rgba(14, 102, 12, 0.3);
+    border-radius: 20px;
+    height: 25px;
+}
+
+input[type="submit"] {
+    margin-top: 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 30px;
+    height: 25px;
+}
+
+    input[type="submit"]:hover {
+        background-color: #000;
+    }
+
+#atext {
+    color: inherit;
+    text-decoration: none;
+    cursor: default;
+}
+
+.ftext {
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin: 5%;
+    border-radius: 20px;
+    width: 35%;
+    height: 311px;
+    box-shadow: 0px 20px 20px rgba(14, 102, 12, 0.3);
+    text-align: justify;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    background-color: #333;
+    ;
+    color: white;
+    text-align: center;
+    align-items: center;
+    bottom: 0;
+    margin: 0;
+    margin-top:10vh;
+    outline: none;
+    display: block;
+    padding-bottom: 1px;
+}
+
+#Telegram {
+    height: 20px;
+    width: 20px;
+}
+
+#Instagram {
+    height: 20px;
+    width: 20px;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff
+}
+
+    nav h1 {
+        display: inline-block;
+        margin: 0;
+        order: 1;
+    }
+
+    nav ul {
+        display: inline-block;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        order: 2;
+    }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+.p {
+    text-align: justify;
+}
+
+.check {
+    display:flex;
+    flex-direction:row;
+}
+
+.switch {
+    align-content: end;
+    align-self: end;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #8aed85;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: rgb(108, 225, 65);
+        -webkit-transition: .4s;
+        transition: .4s;
+        border-radius: 50px;
+    }
+
+input:checked + .slider {
+    background-color: #176b0a;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #0e5403;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}

@@ -23,7 +23,8 @@ namespace WebSystemOfMicroClimat.Data.Services
 
         public Value GetById(int id)
         {
-            throw new NotImplementedException();
+            var value = _context.Values.FirstOrDefault(x => x.UserId == id);
+            return value;
         }
 
         public async Task<IEnumerable<Value>> GetAll()
@@ -34,9 +35,33 @@ namespace WebSystemOfMicroClimat.Data.Services
 
         public Value Update(int id, Value value)
         {
-            throw new NotImplementedException();
+            var value2 = _context.Values.FirstOrDefault(x => x.UserId == id);
+            value2.Temperature = value.Temperature;
+            value2.UserId = id;
+            _context.Update(value2);
+            _context.SaveChanges();
+            return value2;
+        
         }
+        public Value Update2(int id, Value value)
+        {
+            var value2 = _context.Values.FirstOrDefault(x => x.UserId == id);
+            value2.Humidity = value.Humidity;
+            value2.UserId = id;
+            _context.Update(value2);
+            _context.SaveChanges();
+            return value2;
 
+        }
+        public Value Update3(int id, Value value)
+        {
+            var value2 = _context.Values.FirstOrDefault(x => x.UserId == id);
+            value2.Light = value.Light;
+            value2.UserId = id;
+            _context.Update(value2);
+            _context.SaveChanges();
+            return value2;
 
+        }
     }
 }

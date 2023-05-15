@@ -14,6 +14,8 @@ namespace WebSystemOfMicroClimat.Models
         public bool Flat { get; set; }
         public bool GreenHouse { get; set; }
         public Value? Value { get; set; }
-
+        public Temp? Temp { get; set; }
+        public Humidity? Humidity { get; set; }
+        public Light? Light { get; set; }
     }
 }
