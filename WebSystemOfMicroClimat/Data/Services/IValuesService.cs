@@ -6,10 +6,14 @@ namespace WebSystemOfMicroClimat.Data.Services
     {
         Task<IEnumerable<Value>> GetAll();
         Value GetById(int id);
+        Temp GetTempById(int id);
+        Humidity GetHumidityById(int id);
+        Light GetLightById(int id);
         void Add(Value value);
         Value Update(int id, Value value);
         void Delete(Value value);
         Value Update2(int id, Value value);
         Value Update3(int id, Value value);
+        User GetUserById(int id);
     }
 }

@@ -20,10 +20,29 @@ namespace WebSystemOfMicroClimat.Data.Services
         {
             throw new NotImplementedException();
         }
-
+        public User GetUserById(int id)
+        {
+            var value = _context.Users.FirstOrDefault(x => x.UserId == id);
+            return value;
+        }
         public Value GetById(int id)
         {
             var value = _context.Values.FirstOrDefault(x => x.UserId == id);
+            return value;
+        }
+        public Temp GetTempById(int id)
+        {
+            var value = _context.Temps.FirstOrDefault(x => x.UserId == id);
+            return value;
+        }
+        public Humidity GetHumidityById(int id)
+        {
+            var value = _context.Humidities.FirstOrDefault(x => x.UserId == id);
+            return value;
+        }
+        public Light GetLightById(int id)
+        {
+            var value = _context.Lights.FirstOrDefault(x => x.UserId == id);
             return value;
         }
 

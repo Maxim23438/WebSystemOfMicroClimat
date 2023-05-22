@@ -16,6 +16,14 @@
             <input asp-for="Password" type="password" name="password" id="password" required="">
             <label asp-for="Password">Пароль</label>
         </div>
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert">@ViewBag.ErrorMessage</div>
+        }
+        @if (ViewBag.ErrorMessage2 != null)
+        {
+            <div class="alert">@ViewBag.ErrorMessage2</div>
+        }
         <div>
             <p id="textp">Оберіть для чого потрібно змінювати мікроклімат(виберіть один із трьох): </p>
         </div>

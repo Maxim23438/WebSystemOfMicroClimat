@@ -6,6 +6,12 @@ namespace WebSystemOfMicroClimat.Controllers
     {
         public IActionResult Index()
         {
+            TempData["userId"] = 0;
+            return View();
+        }
+        public IActionResult Dovidka()
+        {
+            TempData["userId"] = 0;
             return View();
         }
     }

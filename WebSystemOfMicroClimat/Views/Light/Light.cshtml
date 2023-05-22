@@ -1,4 +1,4 @@
-﻿@model Value
+﻿@model Light
 
 <link rel="stylesheet" href="~/css/TempOsvVol.css" asp-append-version="true" />
 
@@ -6,9 +6,78 @@
     <nav>
         <h1><a asp-controller="Value" asp-action="Index" id="atext">Управління мікрокліматом</a></h1>
         <ul>
-            <li><a asp-controller="Temp" asp-action="Temp">Темпепатура</a></li>
+            <li><a asp-controller="" asp-action="">Особистий кабінет</a></li>
+            <li><a asp-controller="" asp-action="">Тарифний план</a></li>
+            <li><a asp-controller="Temp" asp-action="Temp">Температура</a></li>
             <li><a asp-controller="Humidity" asp-action="Humidity">Вологість</a></li>
             <li><a asp-controller="Light" asp-action="Light">Світло</a></li>
+            <li><a asp-controller="BasePage" asp-action="Index">Вийти</a></li>
         </ul>
     </nav>
+    <div class="container">
+        <main>
+            <section>
+                <form asp-action="Light">
+                    <div class="check">
+                        <label for="1">Ввімкнути диммер?</label>
+                        <label class="switch">
+                            @Html.CheckBox("Dimmer", (bool)@ViewBag.Dimmer, new { @class = "exclusive" })
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="check">*
+                        <label for="2">Ввімкнути освітлювальну лампу?</label>
+                        <label class="switch">
+                            @Html.CheckBox("LampLight", (bool)@ViewBag.LampLight, new { @class = "exclusive" })
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="check">
+                        <label for="3">Ввімкнути ЛЕД-лампу?</label>
+                        <label class="switch">
+                            @Html.CheckBox("LedLamp", (bool)@ViewBag.LedLamp, new { @class = "exclusive" })
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="check">
+                        <label for="4">Відкрити штори?</label>
+                        <label class="switch">
+                            @Html.CheckBox("Curtains", (bool)@ViewBag.Curtains, new { @class = "exclusive" })
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="check">
+                        <label for="5">Відкрити жалюзі?</label>
+                        <label class="switch">
+                            @Html.CheckBox("Jalousie", (bool)@ViewBag.Jalousie, new { @class = "exclusive" })
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="check">
+                        <label for="6">Ввімкнути світловідбивачі?</label>
+                        <label class="switch">
+                            @Html.CheckBox("Reflector", (bool)@ViewBag.Reflector, new { @class = "exclusive" })
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div>
+                        <button type="submit" value="Light">Підтвердити</button>
+                    </div>
+                </form>
+
+            </section>
+        </main>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2023 Управління мікрокліматом</p>
+        <p>
+            У випадку несправності сайту або виникнення пропозицій щодо покращення роботи сайту - використовуйте ці посилання:
+            <a href="https://t.me/maks23438">
+                <img id="Telegram" src="~/css/Telegram_X_2019_Logo.svg.png">
+            </a>
+            <a href="https://instagram.com/maks_milik?igshid=NTc4MTIwNjQ2YQ==">
+                <img id="Instagram" src="~/css/1200px-Instagram.svg.png">
+            </a>
+        </p>
+    </footer>
 </body>

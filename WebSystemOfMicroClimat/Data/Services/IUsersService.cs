@@ -10,5 +10,6 @@ namespace WebSystemOfMicroClimat.Data.Services
         User Update(int id,User user);
         void Delete(User user);
         User GetUser(string name);
+        User GetEmail(string email);
     }
 }

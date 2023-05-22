@@ -11,6 +11,10 @@
             <input asp-for="Password" type="password" name="password" id="password" required="">
             <label asp-for="Password">Пароль</label>
         </div>
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert">@ViewBag.ErrorMessage</div>
+        }
         <div>
             <button type="submit" value="Login">Підтвердити</button>
         </div>

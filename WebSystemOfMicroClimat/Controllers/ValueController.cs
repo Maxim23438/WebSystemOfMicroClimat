@@ -18,6 +18,12 @@ namespace WebSystemOfMicroClimat.Controllers
             userId = (int)TempData["userId"];
             Console.WriteLine(userId);
             TempData["userId"] = userId;
+            var value2 = _service.GetById(userId);
+            if(value2 != null) {
+                ViewBag.Humidity = value2.Humidity;
+                ViewBag.Temperature = value2.Temperature;
+                ViewBag.Light = value2.Light;
+            }
             return View();
         }
         [HttpPost]
@@ -34,6 +40,12 @@ namespace WebSystemOfMicroClimat.Controllers
                     }
                 }
                 return View(userId);
+            }
+            if(value.Temperature > 23 || value.Temperature < 15)
+            {
+                ViewBag.ErrorMessage = "Температура повинна бути в межах від 15 до 23 градусів Цельсія";
+                TempData["userId"] = userId;
+                return View();
             }
             value.UserId = userId;
             var value2 = _service.GetById(userId);
@@ -64,6 +76,12 @@ namespace WebSystemOfMicroClimat.Controllers
                 }
                 return View(userId);
             }
+            if (value.Humidity > 60 || value.Humidity < 40)
+            {
+                ViewBag.ErrorMessage2 = "Вологість повинна бути в межах від 40 до 60 %";
+                TempData["userId"] = userId;
+                return View("Index");
+            }
             value.UserId = userId;
             var value2 = _service.GetById(userId);
             if (value2 == null)
@@ -93,6 +111,12 @@ namespace WebSystemOfMicroClimat.Controllers
                 }
                 return View(userId);
             }
+            if (value.Light > 500 || value.Light < 300)
+            {
+                ViewBag.ErrorMessage3 = "Освітлення повинна бути в межах від 300 до 500 люменів";
+                TempData["userId"] = userId;
+                return View("Index");
+            }
             value.UserId = userId;
             var value2 = _service.GetById(userId);
             if (value2 == null)
@@ -106,6 +130,89 @@ namespace WebSystemOfMicroClimat.Controllers
                 return RedirectToAction("Index", "Value", new { userId = userId });
             }
         }
-        
+        public IActionResult Cab(int userId)
+        {
+            userId = (int)TempData["userId"];
+            Console.WriteLine(userId);
+            TempData["userId"] = userId;
+            var value2 = _service.GetById(userId);
+            var temp = _service.GetTempById(userId);
+            var humidity = _service.GetHumidityById(userId);
+            var light = _service.GetLightById(userId);
+            var user = _service.GetUserById(userId);
+            ViewBag.Name = user.Name;
+            ViewBag.Email = user.Email;
+            if(value2 != null)
+            {
+                ViewBag.Humidity = value2.Humidity;
+                ViewBag.Temperature = value2.Temperature;
+                ViewBag.Light = value2.Light;
+            }
+            else
+            {
+                ViewBag.Humidity = 0;
+                ViewBag.Temperature = 0;
+                ViewBag.Light = 0;
+            }
+            if(temp != null)
+            {
+                ViewBag.Battery = temp.Battery;
+                ViewBag.Kotel = temp.Kotel;
+                ViewBag.Kamin = temp.Kamin;
+                ViewBag.Obigriv = temp.Obigriv;
+                ViewBag.Lamp = temp.Lamp;
+                ViewBag.Bottom = temp.Bottom;
+                ViewBag.Cond = temp.Cond;
+            }
+            else
+            {
+                ViewBag.Battery = false;
+                ViewBag.Kotel = false;
+                ViewBag.Kamin = false;
+                ViewBag.Obigriv = false;
+                ViewBag.Lamp = false;
+                ViewBag.Bottom = false;
+                ViewBag.Cond = false;
+            }
+            if(humidity != null)
+            {
+                ViewBag.Humidifier = humidity.Humidifier;
+                ViewBag.Fan = humidity.Fan;
+                ViewBag.Dehydrator = humidity.Dehydrator;
+                ViewBag.Hygrometer = humidity.Hygrometer;
+                ViewBag.Regulator = humidity.Regulator;
+                ViewBag.Protector = humidity.Protector;
+            }
+            else
+            {
+                ViewBag.Humidifier = false;
+                ViewBag.Fan = false;
+                ViewBag.Dehydrator = false;
+                ViewBag.Hygrometer = false;
+                ViewBag.Regulator = false;
+                ViewBag.Protector = false;
+            }
+            if(light != null)
+            {
+                ViewBag.LampLight = light.LampLight;
+                ViewBag.LedLamp = light.LedLamp;
+                ViewBag.Curtains = light.Curtains;
+                ViewBag.Jalousie = light.Jalousie;
+                ViewBag.Reflector = light.Reflector;
+                ViewBag.Dimmer = light.Dimmer;
+            }
+            else
+            {
+                ViewBag.LampLight = false;
+                ViewBag.LedLamp = false;
+                ViewBag.Curtains = false;
+                ViewBag.Jalousie = false;
+                ViewBag.Reflector = false;
+                ViewBag.Dimmer = false;
+            }
+            return View();
+        }
+
     }
+    
 }

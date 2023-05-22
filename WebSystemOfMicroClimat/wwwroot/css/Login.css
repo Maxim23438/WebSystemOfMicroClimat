@@ -80,3 +80,8 @@ button[type="submit"] {
     button[type="submit"]:hover {
         background-color: rgba(14, 102, 12, 0.9);
     }
+
+.alert {
+    text-align: center;
+    color: red;
+}

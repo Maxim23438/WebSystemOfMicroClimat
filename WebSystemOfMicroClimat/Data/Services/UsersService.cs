@@ -42,5 +42,10 @@ namespace WebSystemOfMicroClimat.Data.Services
             var user = _context.Users.FirstOrDefault(x => x.Name == name);
             return user;
         }
+        public User GetEmail(string email)
+        {
+            var user = _context.Users.FirstOrDefault(x => x.Email == email);
+            return user;
+        }
     }
 }

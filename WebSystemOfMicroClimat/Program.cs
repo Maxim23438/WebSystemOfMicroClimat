@@ -14,6 +14,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 IServiceCollection services = builder.Services;
 services.AddScoped<IUsersService, UsersService>();
 services.AddScoped<IValuesService, ValuesService>();
+services.AddScoped<ITempService, TempService>();
+services.AddScoped<ILightService, LightService>();
+services.AddScoped<IHumidityService, HumidityService>();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
@@ -33,7 +36,7 @@ app.UseAuthorization();
 //AddDbInitializer.Seed(app);
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=User}/{action=Create}/{id?}");
+    pattern: "{controller=BasePage}/{action=Index}/{id?}");
 
 
 app.Run();

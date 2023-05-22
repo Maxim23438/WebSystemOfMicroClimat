@@ -116,7 +116,6 @@
     margin:5%;
     border-radius: 20px;
     width: 35%;
-    height:311px;
     box-shadow: 0px 20px 20px rgba(14, 102, 12, 0.3);
     text-align: justify;
   }
@@ -178,7 +177,28 @@
     margin-right: 20px;
   }
 
-  .p{
+.p {
     text-align: justify;
-  }
+  
+}
+
+button {
+    margin-top: 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 30px;
+    height: 30px;
+}
+
+    button:hover {
+        background-color: #000;
+    }
+
+.alert {
+    text-align: center;
+    color: red;
+}
   

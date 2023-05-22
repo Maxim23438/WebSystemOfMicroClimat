@@ -101,3 +101,9 @@ a {
   {
 	font-family: 'Roboto Condensed', sans-serif;
   }
+
+.alert
+{
+    text-align:center;
+    color:red;
+}
