@@ -1,11 +1,31 @@
 ﻿
-<link rel="stylesheet" href="~/css/ClimatStyle.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/Cabinet.css" asp-append-version="true" />
+<style>
+    p{
+        text-align:left;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        padding: 10px;
+        text-align: center;
+    }
+    .td1
+    {
+        padding: 10px;
+        text-align: left;
+    }
+</style>
 <body class="body">
     <nav>
         <h1><a asp-controller="Value" asp-action="Index" id="atext">Управління мікрокліматом</a></h1>
         <ul>
             <li><a asp-controller="Value" asp-action="Cab">Особистий кабінет</a></li>
-            <li><a asp-controller="" asp-action="">Тарифний план</a></li>
+            <li><a asp-controller="Value" asp-action="Plan">Тарифний план</a></li>
             <li><a asp-controller="Temp" asp-action="Temp">Температура</a></li>
             <li><a asp-controller="Humidity" asp-action="Humidity">Вологість</a></li>
             <li><a asp-controller="Light" asp-action="Light">Світло</a></li>
@@ -14,218 +34,157 @@
     </nav>
     <div class="container">
         <main>
-            <p>Логін: @ViewBag.Name</p>
-            <p>Електронна пошта: @ViewBag.Email</p>
-            <p>Температура: @ViewBag.Temperature градусів Цельсія</p>
-            <p>Вологість: @ViewBag.Humidity %</p>
-            <p>Освітлення: @ViewBag.Light люменів</p>
-            <p>Батареї:
-                @if ((bool)ViewBag.Battery)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>Котел:
-                @if ((bool)ViewBag.Kotel)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                Камін:
-                @if ((bool)ViewBag.Kamin)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                Обігрівач:
-                @if ((bool)ViewBag.Obigriv)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                Лампа розжарювання:
-                @if ((bool)ViewBag.Lamp)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                Підлога з підігрівом:
-                @if ((bool)ViewBag.Bottom)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                Кондиціонер:
-                @if ((bool)ViewBag.Cond)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                Зволожувач повітря:
-                @if ((bool)ViewBag.Humidifier)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                Вентилятор:
-                @if ((bool)ViewBag.Fan)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                Дезгідратор:
-                @if ((bool)ViewBag.Dehydrator)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                Захист від запотівання:
-                @if ((bool)ViewBag.Protector)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                Регулятор повітря:
-                @if ((bool)ViewBag.Regulator)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                Гігрометр:
-                @if ((bool)ViewBag.Hygrometer)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                Диммер:
-                @if ((bool)ViewBag.Dimmer)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                Освітлювальна лампа:
-                @if ((bool)ViewBag.LampLight)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                ЛЕД-лампа:
-                @if ((bool)ViewBag.LedLamp)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
-            <p>
-                Штори:
-                @if ((bool)ViewBag.Curtains)
-                {
-                    <span>Відкриті</span>
-                }
-                else
-                {
-                    <span>Закриті</span>
-                }
-            </p>
-            <p>
-                Жалюзі:
-                @if ((bool)ViewBag.Jalousie)
-                {
-                    <span>Відкриті</span>
-                }
-                else
-                {
-                    <span>Закриті</span>
-                }
-            </p>
-            <p>
-                Світловідбивачі:
-                @if ((bool)ViewBag.Reflector)
-                {
-                    <span>Ввімкнено</span>
-                }
-                else
-                {
-                    <span>Вимкнено</span>
-                }
-            </p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="td1">Логін</td>
+                        <td class="td1">@ViewBag.Name</td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Електронна пошта</td>
+                        <td class="td1">@ViewBag.Email</td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Температура</td>
+                        <td class="td1">@ViewBag.Temperature градусів Цельсія</td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Вологість</td>
+                        <td class="td1">@ViewBag.Humidity %</td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Освітлення</td>
+                        <td class="td1">@ViewBag.Light люменів</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Пристрій</th>
+                        <th>Стан</th>
+                        <th>Час вмикання</th>
+                        <th>Час вимикання</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Батареї</td>
+                        <td>@((bool)ViewBag.Battery ? "Ввімкнено" : "Вимкнено")</td>
+                        <td>@ViewBag.BatteryOn</td>
+                        <td>@ViewBag.BatteryOff</td>
+                    </tr>
+                    <tr>
+                        <td>Котел</td>
+                        <td>@((bool)ViewBag.Kotel ? "Ввімкнено" : "Вимкнено")</td>
+                        <td>@ViewBag.KotelOn</td>
+                        <td>@ViewBag.KotelOff</td>
+                    </tr>
+                    <tr>
+                        <td>Камін</td>
+                        <td>@((bool)ViewBag.Kamin ? "Ввімкнено" : "Вимкнено")</td>
+                        <td>@ViewBag.KaminOn</td>
+                        <td>@ViewBag.KaminOff</td>
+                    </tr>
+                    <tr>
+                        <td>Обігрівач</td>
+                        <td>@((bool)ViewBag.Obigriv ? "Ввімкнено" : "Вимкнено")</td>
+                        <td>@ViewBag.ObigrivOn</td>
+                        <td>@ViewBag.ObigrivOff</td>
+                    </tr>
+                    <tr>
+                        <td>Лампа розжарювання</td>
+                        <td>@((bool)ViewBag.Lamp ? "Ввімкнено" : "Вимкнено")</td>
+                        <td>@ViewBag.LampOn</td>
+                        <td>@ViewBag.LampOff</td>
+                    </tr>
+                    <tr>
+                        <td>Підлога з підігрівом</td>
+                        <td>@((bool)ViewBag.Bottom ? "Ввімкнено" : "Вимкнено")</td>
+                        <td>@ViewBag.BottomOn</td>
+                        <td>@ViewBag.BottomOff</td>
+                    </tr>
+                    <tr>
+                        <td>Кондиціонер</td>
+                        <td>@((bool)ViewBag.Cond ? "Ввімкнено" : "Вимкнено")</td>
+                        <td>@ViewBag.CondOn</td>
+                        <td>@ViewBag.CondOff</td>
+                    </tr>
+                    <tr>
+                        <td>Зволожувач повітря</td>
+                        <td>@((bool)ViewBag.Humidifier ? "Ввімкнено" : "Вимкнено")</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Вентилятор</td>
+                        <td>@((bool)ViewBag.Fan ? "Ввімкнено" : "Вимкнено")</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Дезгідратор</td>
+                        <td>@((bool)ViewBag.Dehydrator ? "Ввімкнено" : "Вимкнено")</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Захист від запотівання</td>
+                        <td>@((bool)ViewBag.Protector ? "Ввімкнено" : "Вимкнено")</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Регулятор повітря</td>
+                        <td>@((bool)ViewBag.Regulator ? "Ввімкнено" : "Вимкнено")</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Гігрометр</td>
+                        <td>@((bool)ViewBag.Hygrometer ? "Ввімкнено" : "Вимкнено")</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Диммер</td>
+                        <td>@((bool)ViewBag.Dimmer ? "Ввімкнено" : "Вимкнено")</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Освітлювальна лампа</td>
+                        <td>@((bool)ViewBag.LampLight ? "Ввімкнено" : "Вимкнено")</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>ЛЕД-лампа</td>
+                        <td>@((bool)ViewBag.LedLamp ? "Ввімкнено" : "Вимкнено")</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Штори</td>
+                        <td>@((bool)ViewBag.Curtains ? "Відкриті" : "Закриті")</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Жалюзі</td>
+                        <td>@((bool)ViewBag.Jalousie ? "Відкриті" : "Закриті")</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Світловідбивачі</td>
+                        <td>@((bool)ViewBag.Reflector ? "Ввімкнено" : "Вимкнено")</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
         </main>
     </div>
     <footer class="footer">

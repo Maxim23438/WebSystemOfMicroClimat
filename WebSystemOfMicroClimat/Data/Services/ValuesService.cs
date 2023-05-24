@@ -45,6 +45,16 @@ namespace WebSystemOfMicroClimat.Data.Services
             var value = _context.Lights.FirstOrDefault(x => x.UserId == id);
             return value;
         }
+        public TempTimeOn GetTimeOnById(int userId)
+        {
+            var value = _context.TempsTimeOns.FirstOrDefault(x => x.UserId == userId);
+            return value;
+        }
+        public TempTimeOff GetTimeOffById(int userId)
+        {
+            var value = _context.TempsTimeOffs.FirstOrDefault(x => x.UserId == userId);
+            return value;
+        }
 
         public async Task<IEnumerable<Value>> GetAll()
         {

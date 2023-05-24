@@ -32,6 +32,11 @@ namespace WebSystemOfMicroClimat.Data.Services
             var value = _context.Temps.FirstOrDefault(x => x.UserId == id);
             return value;
         }
+        public User GetUserById(int id)
+        {
+            var value = _context.Users.FirstOrDefault(x => x.UserId == id);
+            return value;
+        }
 
         public Temp GetTemp(int userId)
         {
@@ -51,6 +56,54 @@ namespace WebSystemOfMicroClimat.Data.Services
             _context.Update(value2);
             _context.SaveChanges();
             return value2;
+        }
+        public TempTimeOn GetTimeOnById(int userId)
+        {
+            var value = _context.TempsTimeOns.FirstOrDefault(x => x.UserId == userId);
+            return value;
+        }
+        public TempTimeOff GetTimeOffById(int userId)
+        {
+            var value = _context.TempsTimeOffs.FirstOrDefault(x => x.UserId == userId);
+            return value;
+        }
+        public void AddTimeOn(TempTimeOn timeOn)
+        {
+            _context.TempsTimeOns.Add(timeOn);
+            _context.SaveChanges();
+        }
+        public void AddTimeOff(TempTimeOff timeOff)
+        {
+            _context.TempsTimeOffs.Add(timeOff);
+            _context.SaveChanges();
+        }
+        public TempTimeOff UpdateTimeOffById(int userId,TempTimeOff timeOff)
+        {
+            var value = _context.TempsTimeOffs.FirstOrDefault(x => x.UserId == userId);
+            value.BatteryOff = timeOff.BatteryOff;
+            value.KotelOff = timeOff.KotelOff;
+            value.KaminOff = timeOff.KaminOff;
+            value.ObigrivOff = timeOff.ObigrivOff;
+            value.BottomOff = timeOff.BottomOff;
+            value.CondOff = timeOff.CondOff;
+            value.LampOff = timeOff.LampOff;
+            _context.Update(value);
+            _context.SaveChanges();
+            return value;
+        }
+        public TempTimeOn UpdateTimeOnById(int userId, TempTimeOn timeOn)
+        {
+            var value = _context.TempsTimeOns.FirstOrDefault(x => x.UserId == userId);
+            value.BatteryOn = timeOn.BatteryOn;
+            value.KotelOn = timeOn.KotelOn;
+            value.KaminOn = timeOn.KaminOn;
+            value.ObigrivOn = timeOn.ObigrivOn;
+            value.BottomOn = timeOn.BottomOn;
+            value.CondOn = timeOn.CondOn;
+            value.LampOn = timeOn.LampOn;
+            _context.Update(value);
+            _context.SaveChanges();
+            return value;
         }
     }
 }

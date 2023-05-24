@@ -16,6 +16,12 @@ namespace WebSystemOfMicroClimat.Controllers
             userId = (int)TempData["userId"];
             Console.WriteLine($"{userId}");
             TempData["userId"] = userId;
+            var user = _service.GetUserById(userId);
+            if (user.IsPayment == false)
+            {
+                TempData["ErrorMessage"] = "Скинь пару шекелів на карту";
+                return RedirectToAction("Index", "Value", new { userId = userId });
+            }
             var value = _service.GetById(userId);
             if (value != null)
             {

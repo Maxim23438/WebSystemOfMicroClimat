@@ -19,7 +19,7 @@ namespace WebSystemOfMicroClimat.Controllers
             Console.WriteLine(userId);
             TempData["userId"] = userId;
             var value2 = _service.GetById(userId);
-            if(value2 != null) {
+            if (value2 != null) {
                 ViewBag.Humidity = value2.Humidity;
                 ViewBag.Temperature = value2.Temperature;
                 ViewBag.Light = value2.Light;
@@ -27,9 +27,11 @@ namespace WebSystemOfMicroClimat.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index([Bind("Temperature")] int userId,Value value) {
+        public IActionResult Index([Bind("Temperature")] int userId, Value value) {
             userId = (int)TempData["userId"];
             Console.WriteLine(userId);
+            string errorM = TempData["ErrorMessage"] as string;
+            ViewBag.ErrorM = errorM;
             if (!ModelState.IsValid)
             {
                 foreach (var val in ModelState.Values)
@@ -41,7 +43,7 @@ namespace WebSystemOfMicroClimat.Controllers
                 }
                 return View(userId);
             }
-            if(value.Temperature > 23 || value.Temperature < 15)
+            if (value.Temperature > 23 || value.Temperature < 15)
             {
                 ViewBag.ErrorMessage = "Температура повинна бути в межах від 15 до 23 градусів Цельсія";
                 TempData["userId"] = userId;
@@ -95,6 +97,7 @@ namespace WebSystemOfMicroClimat.Controllers
                 return RedirectToAction("Index", "Value", new { userId = userId });
             }
         }
+
         [HttpPost]
         public IActionResult Index3([Bind("Light")] int userId, Value value)
         {
@@ -130,6 +133,14 @@ namespace WebSystemOfMicroClimat.Controllers
                 return RedirectToAction("Index", "Value", new { userId = userId });
             }
         }
+        public IActionResult Plan(int userId)
+        {
+            userId = (int)TempData["userId"];
+            Console.WriteLine(userId);
+            TempData["userId"] = userId;
+            return View();
+        }
+        
         public IActionResult Cab(int userId)
         {
             userId = (int)TempData["userId"];
@@ -142,6 +153,8 @@ namespace WebSystemOfMicroClimat.Controllers
             var user = _service.GetUserById(userId);
             ViewBag.Name = user.Name;
             ViewBag.Email = user.Email;
+            var timeOn = _service.GetTimeOnById(userId);
+            var timeOff = _service.GetTimeOffById(userId);
             if(value2 != null)
             {
                 ViewBag.Humidity = value2.Humidity;
@@ -209,6 +222,26 @@ namespace WebSystemOfMicroClimat.Controllers
                 ViewBag.Jalousie = false;
                 ViewBag.Reflector = false;
                 ViewBag.Dimmer = false;
+            }
+            if(timeOn != null)
+            {
+                ViewBag.BatteryOn = timeOn.BatteryOn;
+                ViewBag.BottomOn = timeOn.BottomOn;
+                ViewBag.CondOn = timeOn.CondOn;
+                ViewBag.KotelOn = timeOn.KotelOn;
+                ViewBag.KaminOn = timeOn.KaminOn;
+                ViewBag.LampOn = timeOn.LampOn;
+                ViewBag.ObigrivOn = timeOn.ObigrivOn;
+            }
+            if(timeOff != null)
+            {
+                ViewBag.BatteryOff = timeOff.BatteryOff;
+                ViewBag.BottomOff = timeOff.BottomOff;
+                ViewBag.CondOff = timeOff.CondOff;
+                ViewBag.KotelOff = timeOff.KotelOff;
+                ViewBag.KaminOff = timeOff.KaminOff;
+                ViewBag.LampOff = timeOff.LampOff;
+                ViewBag.ObigrivOff = timeOff.ObigrivOff;
             }
             return View();
         }

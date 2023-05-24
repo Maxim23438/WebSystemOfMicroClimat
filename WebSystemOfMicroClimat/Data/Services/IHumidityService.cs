@@ -10,5 +10,6 @@ namespace WebSystemOfMicroClimat.Data.Services
         Humidity Update(int id, Humidity humidity);
         void Delete(Humidity humidity);
         Humidity GetHumidity(int userId);
+        User GetUserById(int id);
     }
 }

@@ -1,0 +1,22 @@
+﻿@model Admin
+<link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
+<div class="login-box">
+    <h2>Авторизація</h2>
+    <form asp-action="AdminLogin">
+        <div class="user-box">
+            <input type="text" name="name" id="name" asp-for="Name" required="">
+            <label asp-for="Name">Логін</label>
+        </div>
+        <div class="user-box">
+            <input asp-for="Password" type="password" name="password" id="password" required="">
+            <label asp-for="Password">Пароль</label>
+        </div>
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert">@ViewBag.ErrorMessage</div>
+        }
+        <div>
+            <button type="submit" value="Login">Підтвердити</button>
+        </div>
+    </form>
+</div>

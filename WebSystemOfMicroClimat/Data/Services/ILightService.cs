@@ -10,5 +10,6 @@ namespace WebSystemOfMicroClimat.Data.Services
         Light Update(int id, Light light);
         void Delete(Light light);
         Light GetLight(int userId);
+        User GetUserById(int id);
     }
 }

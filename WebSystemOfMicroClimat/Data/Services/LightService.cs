@@ -33,6 +33,11 @@ namespace WebSystemOfMicroClimat.Data.Services
             var value = _context.Lights.FirstOrDefault(x => x.UserId == id);
             return value;
         }
+        public User GetUserById(int id)
+        {
+            var value = _context.Users.FirstOrDefault(x => x.UserId == id);
+            return value;
+        }
 
         public Light GetLight(int userId)
         {

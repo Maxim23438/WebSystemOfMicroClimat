@@ -23,7 +23,8 @@ namespace WebSystemOfMicroClimat.Data.Services
 
         public User GetById(int id)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.FirstOrDefault(x => x.UserId == id);
+            return user;
         }
 
         public async Task<IEnumerable<User>> GetAll()
@@ -34,7 +35,15 @@ namespace WebSystemOfMicroClimat.Data.Services
 
         public User Update(int id, User user)
         {
-            throw new NotImplementedException();
+            var value2 = _context.Users.FirstOrDefault(x => x.UserId == id);
+            value2.Name = user.Name;
+            value2.UserId = id;
+            value2.Email = user.Email;
+            value2.Password = user.Password;
+            value2.IsPayment = user.IsPayment;
+            _context.Update(value2);
+            _context.SaveChanges();
+            return value2;
         }
 
         public User GetUser(string name)
@@ -45,6 +54,11 @@ namespace WebSystemOfMicroClimat.Data.Services
         public User GetEmail(string email)
         {
             var user = _context.Users.FirstOrDefault(x => x.Email == email);
+            return user;
+        }
+        public Admin GetAdmin(string name)
+        {
+            var user = _context.Admins.FirstOrDefault(x => x.Name == name);
             return user;
         }
     }

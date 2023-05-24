@@ -1,5 +1,93 @@
-﻿
+﻿@model IEnumerable<User>
+<link rel="stylesheet" href="~/css/AdminPanel.css" asp-append-version="true" />
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-<h1>
-    Welcome to Users Index HTML
-</h1>
+    td,th{
+        padding: 10px;
+        text-align: center;
+    }
+</style>
+<body class="body">
+    <nav>
+        <h1><a asp-controller="" asp-action="" id="atext">Управління мікрокліматом</a></h1>
+        <ul>
+            <li><a asp-controller="BasePage" asp-action="Index">На головну</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+       <main>
+            <h2>Список користувачів</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ім'я</th>
+                        <th>Email</th>
+                        <th>Приміщення</th>
+                        <th>Тарифний план</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.Name</td>
+                            <td>@user.Email</td>
+                            <td>
+                                @if (user.House)
+                                {
+                                    <span>Будинок</span>
+                                }
+                                else if (user.Flat)
+                                {
+                                    <span>Квартира</span>
+                                }
+                                else if (user.GreenHouse)
+                                {
+                                    <span>Теплиця</span>
+                                }
+                                else
+                                {
+                                    <span>Невідомо</span>
+                                }
+                            </td>
+                            <td>
+                                @if (user.IsPayment)
+                                {
+                                    <span>Наявний</span>
+                                }
+                                else
+                                {
+                                    <span>Відсутній</span>
+                                }
+                            </td>
+                            <td>
+                                <a href="@Url.Action("EditUser", new { userId = user.UserId })">
+                                    <img id="Telegram" src="~/css/file_page_paper_text_write_pen_edit_icon_250673.png">
+                                </a>
+                            </td>
+                            <!-- Додайте інші поля, які ви хочете відобразити -->
+                        </tr>
+                    }
+                </tbody>
+            </table>
+       </main>
+    </div>
+</body>
+
+<footer class="footer">
+    <p>&copy; 2023 Управління мікрокліматом</p>
+    <p>
+        У випадку несправності сайту або виникнення пропозицій щодо покращення роботи сайту - використовуйте ці посилання:
+        <a href="https://t.me/maks23438">
+            <img id="Telegram" src="~/css/Telegram_X_2019_Logo.svg.png">
+        </a>
+        <a href="https://instagram.com/maks_milik?igshid=NTc4MTIwNjQ2YQ==">
+            <img id="Instagram" src="~/css/1200px-Instagram.svg.png">
+        </a>
+    </p>
+</footer>
+

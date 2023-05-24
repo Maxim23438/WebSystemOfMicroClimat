@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -11,6 +12,20 @@ namespace WebSystemOfMicroClimat.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Admins",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Admins", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -21,7 +36,8 @@ namespace WebSystemOfMicroClimat.Migrations
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     House = table.Column<bool>(type: "bit", nullable: false),
                     Flat = table.Column<bool>(type: "bit", nullable: false),
-                    GreenHouse = table.Column<bool>(type: "bit", nullable: false)
+                    GreenHouse = table.Column<bool>(type: "bit", nullable: false),
+                    IsPayment = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -105,6 +121,58 @@ namespace WebSystemOfMicroClimat.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TempsTimeOffs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BatteryOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    KotelOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    BottomOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    KaminOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ObigrivOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CondOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LampOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TempsTimeOffs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TempsTimeOffs_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TempsTimeOns",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BatteryOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    KotelOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    BottomOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    KaminOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ObigrivOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CondOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LampOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TempsTimeOns", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TempsTimeOns_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Values",
                 columns: table => new
                 {
@@ -145,6 +213,18 @@ namespace WebSystemOfMicroClimat.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_TempsTimeOffs_UserId",
+                table: "TempsTimeOffs",
+                column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TempsTimeOns_UserId",
+                table: "TempsTimeOns",
+                column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Values_UserId",
                 table: "Values",
                 column: "UserId",
@@ -155,6 +235,9 @@ namespace WebSystemOfMicroClimat.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Admins");
+
+            migrationBuilder.DropTable(
                 name: "Humidities");
 
             migrationBuilder.DropTable(
@@ -162,6 +245,12 @@ namespace WebSystemOfMicroClimat.Migrations
 
             migrationBuilder.DropTable(
                 name: "Temps");
+
+            migrationBuilder.DropTable(
+                name: "TempsTimeOffs");
+
+            migrationBuilder.DropTable(
+                name: "TempsTimeOns");
 
             migrationBuilder.DropTable(
                 name: "Values");

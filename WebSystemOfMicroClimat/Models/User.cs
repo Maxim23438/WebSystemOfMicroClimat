@@ -17,5 +17,12 @@ namespace WebSystemOfMicroClimat.Models
         public Temp? Temp { get; set; }
         public Humidity? Humidity { get; set; }
         public Light? Light { get; set; }
+        public TempTimeOn? TempTimeOn { get; set; }
+        public TempTimeOff? TempTimeOff { get; set; }
+        public LightTimeOn? LightTimeOn { get; set; }
+        public LightTimeOff? LightTimeOff { get; set; }
+        public HumTimeOn? HumTimeOn { get; set; }
+        public HumTimeOff? HumTimeOff { get; set; }
+        public bool IsPayment { get; set; }
     }
 }

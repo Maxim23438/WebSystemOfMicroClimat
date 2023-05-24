@@ -32,6 +32,11 @@ namespace WebSystemOfMicroClimat.Data.Services
             var value = _context.Humidities.FirstOrDefault(x => x.UserId == id);
             return value;
         }
+        public User GetUserById(int id)
+        {
+            var value = _context.Users.FirstOrDefault(x => x.UserId == id);
+            return value;
+        }
 
         public Humidity GetHumidity(int userId)
         {

@@ -7,6 +7,7 @@ using WebSystemOfMicroClimat.Data.Services;
 using WebSystemOfMicroClimat.Models;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace WebSystemOfMicroClimat.Controllers
 {
@@ -48,6 +49,7 @@ namespace WebSystemOfMicroClimat.Controllers
                 sb.Append(hashedBytes[i].ToString("x2"));
             }
             user.Password = sb.ToString();
+            user.IsPayment = false;
             var user2 = _service.GetUser(user.Name);
             var user3 = _service.GetEmail(user.Email);
             if(user2 != null && user3 != null)
@@ -100,6 +102,62 @@ namespace WebSystemOfMicroClimat.Controllers
                 ViewBag.ErrorMessage = "Неправильний логін або пароль";
                 return View();
             }
+        }
+        public IActionResult AdminLogin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AdminLogin([Bind("Name,Password")] Admin admin)
+        {
+            var user2 = _service.GetAdmin(admin.Name);
+            if (user2 != null && user2.Password == admin.Password)
+            {
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Неправильний логін або пароль";
+                return View();
+            }
+        }
+        public IActionResult EditUser(int userId)
+        {
+            Console.WriteLine(userId);
+            var user = _service.GetById(userId);
+            if (user != null)
+            {
+                return View(user);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+        [HttpPost]
+        public IActionResult EditUser(int userId,bool IsPayment)
+        {
+            var value2 = _service.GetById(userId);
+            value2.IsPayment = IsPayment;
+            if (ModelState.IsValid)
+            {
+                // Зберегти зміни користувача в БД
+                _service.Update(userId,value2);
+
+                return RedirectToAction("Index", "User"); // Повернутись до сторінки зі списком користувачів, наприклад
+            }
+            else
+            {
+                foreach (var value in ModelState.Values)
+                {
+                    foreach (var error in value.Errors)
+                    {
+                        Console.WriteLine(error.ErrorMessage);
+                    }
+                }
+                return View(value2);
+            }
+
         }
     }
 }
