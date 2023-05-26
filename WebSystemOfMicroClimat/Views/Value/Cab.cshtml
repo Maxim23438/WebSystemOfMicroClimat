@@ -22,7 +22,7 @@
 </style>
 <body class="body">
     <nav>
-        <h1><a asp-controller="Value" asp-action="Index" id="atext">Управління мікрокліматом</a></h1>
+        <h1><a asp-controller="Value" asp-action="Index" id="atext">EcoComfort</a></h1>
         <ul>
             <li><a asp-controller="Value" asp-action="Cab">Особистий кабінет</a></li>
             <li><a asp-controller="Value" asp-action="Plan">Тарифний план</a></li>
@@ -113,74 +113,74 @@
                     <tr>
                         <td>Зволожувач повітря</td>
                         <td>@((bool)ViewBag.Humidifier ? "Ввімкнено" : "Вимкнено")</td>
-                        <td></td>
-                        <td></td>
+                        <td>@ViewBag.HumidifierOn</td>
+                        <td>@ViewBag.HumidifierOff</td>
                     </tr>
                     <tr>
                         <td>Вентилятор</td>
                         <td>@((bool)ViewBag.Fan ? "Ввімкнено" : "Вимкнено")</td>
-                        <td></td>
-                        <td></td>
+                        <td>@ViewBag.FanOn</td>
+                        <td>@ViewBag.FanOff</td>
                     </tr>
                     <tr>
                         <td>Дезгідратор</td>
                         <td>@((bool)ViewBag.Dehydrator ? "Ввімкнено" : "Вимкнено")</td>
-                        <td></td>
-                        <td></td>
+                        <td>@ViewBag.DehydratorOn</td>
+                        <td>@ViewBag.DehydratorOff</td>
                     </tr>
                     <tr>
                         <td>Захист від запотівання</td>
                         <td>@((bool)ViewBag.Protector ? "Ввімкнено" : "Вимкнено")</td>
-                        <td></td>
-                        <td></td>
+                        <td>@ViewBag.ProtectorOn</td>
+                        <td>@ViewBag.ProtectorOff</td>
                     </tr>
                     <tr>
                         <td>Регулятор повітря</td>
                         <td>@((bool)ViewBag.Regulator ? "Ввімкнено" : "Вимкнено")</td>
-                        <td></td>
-                        <td></td>
+                        <td>@ViewBag.RegulatorOn</td>
+                        <td>@ViewBag.regulatorOff</td>
                     </tr>
                     <tr>
                         <td>Гігрометр</td>
                         <td>@((bool)ViewBag.Hygrometer ? "Ввімкнено" : "Вимкнено")</td>
-                        <td></td>
-                        <td></td>
+                        <td>@ViewBag.HygrometerOn</td>
+                        <td>@ViewBag.HygrometerOff</td>
                     </tr>
                     <tr>
                         <td>Диммер</td>
                         <td>@((bool)ViewBag.Dimmer ? "Ввімкнено" : "Вимкнено")</td>
-                        <td></td>
-                        <td></td>
+                        <td>@ViewBag.DimmerOn</td>
+                        <td>@ViewBag.DimmerOff</td>
                     </tr>
                     <tr>
                         <td>Освітлювальна лампа</td>
                         <td>@((bool)ViewBag.LampLight ? "Ввімкнено" : "Вимкнено")</td>
-                        <td></td>
-                        <td></td>
+                        <td>@ViewBag.LampLightOn</td>
+                        <td>@ViewBag.LampLightOff</td>
                     </tr>
                     <tr>
                         <td>ЛЕД-лампа</td>
                         <td>@((bool)ViewBag.LedLamp ? "Ввімкнено" : "Вимкнено")</td>
-                        <td></td>
-                        <td></td>
+                        <td>@ViewBag.LedLampOn</td>
+                        <td>@ViewBag.LedLampOff</td>
                     </tr>
                     <tr>
                         <td>Штори</td>
                         <td>@((bool)ViewBag.Curtains ? "Відкриті" : "Закриті")</td>
-                        <td></td>
-                        <td></td>
+                        <td>@ViewBag.CurtainsOn</td>
+                        <td>@ViewBag.CurtainsOff</td>
                     </tr>
                     <tr>
                         <td>Жалюзі</td>
                         <td>@((bool)ViewBag.Jalousie ? "Відкриті" : "Закриті")</td>
-                        <td></td>
-                        <td></td>
+                        <td>@ViewBag.JalousieOn</td>
+                        <td>@ViewBag.JalousieOff</td>
                     </tr>
                     <tr>
                         <td>Світловідбивачі</td>
                         <td>@((bool)ViewBag.Reflector ? "Ввімкнено" : "Вимкнено")</td>
-                        <td></td>
-                        <td></td>
+                        <td>@ViewBag.ReflectorOn</td>
+                        <td>@ViewBag.ReflectorOff</td>
                     </tr>
                 </tbody>
             </table>

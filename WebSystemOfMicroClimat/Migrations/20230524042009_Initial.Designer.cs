@@ -12,7 +12,7 @@ using WebSystemOfMicroClimat.Data;
 namespace WebSystemOfMicroClimat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230524020755_Initial")]
+    [Migration("20230524042009_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -44,6 +44,80 @@ namespace WebSystemOfMicroClimat.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Admins");
+                });
+
+            modelBuilder.Entity("WebSystemOfMicroClimat.Models.HumTimeOff", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("DehydratorOff")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FanOff")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("HumidifierOff")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("HygrometerOff")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ProtectorOff")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("RegulatorOff")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("HumTimeOffs");
+                });
+
+            modelBuilder.Entity("WebSystemOfMicroClimat.Models.HumTimeOn", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("DehydratorOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FanOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("HumidifierOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("HygrometerOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ProtectorOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("RegulatorOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("HumTimeOns");
                 });
 
             modelBuilder.Entity("WebSystemOfMicroClimat.Models.Humidity", b =>
@@ -118,6 +192,80 @@ namespace WebSystemOfMicroClimat.Migrations
                         .IsUnique();
 
                     b.ToTable("Lights");
+                });
+
+            modelBuilder.Entity("WebSystemOfMicroClimat.Models.LightTimeOff", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CurtainsOff")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DimmerOff")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("JalousieOff")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LampLightOff")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LedLampOff")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ReflectorOff")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("LightTimeOffs");
+                });
+
+            modelBuilder.Entity("WebSystemOfMicroClimat.Models.LightTimeOn", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CurtainsOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DimmerOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("JalousieOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LampLightOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LedLampOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ReflectorOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("LightTimeOns");
                 });
 
             modelBuilder.Entity("WebSystemOfMicroClimat.Models.Temp", b =>
@@ -305,6 +453,28 @@ namespace WebSystemOfMicroClimat.Migrations
                     b.ToTable("Values");
                 });
 
+            modelBuilder.Entity("WebSystemOfMicroClimat.Models.HumTimeOff", b =>
+                {
+                    b.HasOne("WebSystemOfMicroClimat.Models.User", "User")
+                        .WithOne("HumTimeOff")
+                        .HasForeignKey("WebSystemOfMicroClimat.Models.HumTimeOff", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WebSystemOfMicroClimat.Models.HumTimeOn", b =>
+                {
+                    b.HasOne("WebSystemOfMicroClimat.Models.User", "User")
+                        .WithOne("HumTimeOn")
+                        .HasForeignKey("WebSystemOfMicroClimat.Models.HumTimeOn", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("WebSystemOfMicroClimat.Models.Humidity", b =>
                 {
                     b.HasOne("WebSystemOfMicroClimat.Models.User", "User")
@@ -321,6 +491,28 @@ namespace WebSystemOfMicroClimat.Migrations
                     b.HasOne("WebSystemOfMicroClimat.Models.User", "User")
                         .WithOne("Light")
                         .HasForeignKey("WebSystemOfMicroClimat.Models.Light", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WebSystemOfMicroClimat.Models.LightTimeOff", b =>
+                {
+                    b.HasOne("WebSystemOfMicroClimat.Models.User", "User")
+                        .WithOne("LightTimeOff")
+                        .HasForeignKey("WebSystemOfMicroClimat.Models.LightTimeOff", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WebSystemOfMicroClimat.Models.LightTimeOn", b =>
+                {
+                    b.HasOne("WebSystemOfMicroClimat.Models.User", "User")
+                        .WithOne("LightTimeOn")
+                        .HasForeignKey("WebSystemOfMicroClimat.Models.LightTimeOn", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -373,9 +565,17 @@ namespace WebSystemOfMicroClimat.Migrations
 
             modelBuilder.Entity("WebSystemOfMicroClimat.Models.User", b =>
                 {
+                    b.Navigation("HumTimeOff");
+
+                    b.Navigation("HumTimeOn");
+
                     b.Navigation("Humidity");
 
                     b.Navigation("Light");
+
+                    b.Navigation("LightTimeOff");
+
+                    b.Navigation("LightTimeOn");
 
                     b.Navigation("Temp");
 

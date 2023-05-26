@@ -92,5 +92,29 @@ namespace WebSystemOfMicroClimat.Data.Services
             return value2;
 
         }
+
+        public LightTimeOff GetLTimeOffById(int userId)
+        {
+            var value = _context.LightTimeOffs.FirstOrDefault(x => x.UserId == userId);
+            return value;
+        }
+
+        public LightTimeOn GetLTimeOnById(int userId)
+        {
+            var value = _context.LightTimeOns.FirstOrDefault(x => x.UserId == userId);
+            return value;
+        }
+
+        public HumTimeOn GetHTimeOnById(int userId)
+        {
+            var value = _context.HumTimeOns.FirstOrDefault(x => x.UserId == userId);
+            return value;
+        }
+
+        public HumTimeOff GetHTimeOffById(int userId)
+        {
+            var value = _context.HumTimeOffs.FirstOrDefault(x => x.UserId == userId);
+            return value;
+        }
     }
 }

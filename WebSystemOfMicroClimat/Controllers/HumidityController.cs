@@ -62,15 +62,109 @@ namespace WebSystemOfMicroClimat.Controllers
             }
             //temp.UserId = userId;
             var value2 = _service.GetById(userId);
+            HumTimeOn timeOn = _service.GetTimeOnById(userId);
+            if (timeOn == null)
+            {
+                timeOn = new HumTimeOn();
+            }
+            HumTimeOff timeOff = _service.GetTimeOffById(userId);
+            if (timeOff == null)
+            {
+                timeOff = new HumTimeOff();
+            }
             if (value2 == null)
             {
                 humidity.UserId = userId;
                 _service.Add(humidity);
+                if (humidity.Humidifier)
+                {
+                    timeOn.HumidifierOn = DateTime.Now;
+                }
+                if (humidity.Fan)
+                {
+                    timeOn.FanOn = DateTime.Now;
+                }
+                if (humidity.Dehydrator)
+                {
+                    timeOn.DehydratorOn = DateTime.Now;
+                }
+                if (humidity.Hygrometer)
+                {
+                    timeOn.HygrometerOn = DateTime.Now;
+                }
+                if (humidity.Protector)
+                {
+                    timeOn.ProtectorOn = DateTime.Now;
+                }
+                if (humidity.Regulator)
+                {
+                    timeOn.RegulatorOn = DateTime.Now;
+                }
+                timeOn.UserId = userId;
+                _service.AddTimeOn(timeOn);
                 return RedirectToAction("Index", "Value", new { userId = userId });
             }
             else
             {
                 _service.Update(userId, humidity);
+                if (timeOn.HumidifierOn != null && timeOff.HumidifierOff == null)
+                {
+                    timeOff.HumidifierOff = DateTime.Now;
+                }
+                else
+                {
+                    timeOn.HumidifierOn = DateTime.Now;
+                }
+                if (timeOn.DehydratorOn != null && timeOff.DehydratorOff == null)
+                {
+                    timeOff.DehydratorOff = DateTime.Now;
+                }
+                else
+                {
+                    timeOn.DehydratorOn = DateTime.Now;
+                }
+                if (timeOn.FanOn != null && timeOff.FanOff == null)
+                {
+                    timeOff.FanOff = DateTime.Now;
+                }
+                else
+                {
+                    timeOn.FanOn = DateTime.Now;
+                }
+                if (timeOn.HygrometerOn != null && timeOff.HygrometerOff == null)
+                {
+                    timeOff.HygrometerOff = DateTime.Now;
+                }
+                else
+                {
+                    timeOn.HygrometerOn = DateTime.Now;
+                }
+                if (timeOn.RegulatorOn != null && timeOff.RegulatorOff == null)
+                {
+                    timeOff.RegulatorOff = DateTime.Now;
+                }
+                else
+                {
+                    timeOn.RegulatorOn = DateTime.Now;
+                }
+                if (timeOn.ProtectorOn != null && timeOff.ProtectorOff == null)
+                {
+                    timeOff.ProtectorOff = DateTime.Now;
+                }
+                else
+                {
+                    timeOn.ProtectorOn = DateTime.Now;
+                }
+                _service.UpdateTimeOnById(userId, timeOn);
+                if (timeOff.Id == 0)
+                {
+                    timeOff.UserId = userId;
+                    _service.AddTimeOff(timeOff);
+                }
+                else
+                {
+                    _service.UpdateTimeOffById(userId, timeOff);
+                }
                 return RedirectToAction("Index", "Value", new { userId = userId });
             }
         }

@@ -1,7 +1,32 @@
 ﻿<link rel="stylesheet" href="~/css/TempOsvVol.css" asp-append-version="true" />
+<style>
+    .paypal-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-left: 120px;
+        text-align:center;
+    }
+    
+        .paypal-button:hover {
+            background-color: #000;
+        }
+
+    .container {
+        background-image: url(220620203-630x437-r.jpg);
+        height: 600px;
+        margin-top: 0px;
+        min-width: 1400px;
+        background-color: var(--roman-coffee);
+    }
+
+</style>
 <body class="body">
     <nav>
-        <h1><a asp-controller="Value" asp-action="Index" id="atext">Управління мікрокліматом</a></h1>
+        <h1><a asp-controller="Value" asp-action="Index" id="atext">EcoComfort</a></h1>
         <ul>
             <li><a asp-controller="Value" asp-action="Cab">Особистий кабінет</a></li>
             <li><a asp-controller="Value" asp-action="Plan">Тарифний план</a></li>
@@ -11,14 +36,33 @@
             <li><a asp-controller="BasePage" asp-action="Index">Вийти</a></li>
         </ul>
     </nav>
+   
     <div class="container">
-        <main>
+        <main ">
+            <h2>Тарифний план</h2>
+            <div>
+                <h2>Standart</h2>
+                <p>З тарифом Standart у Вас зявиться можливість змінювати параметри до 20 разів.</p>
+                <p>Ціна: 0.03$</p>
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=maxim.milinevskiy@gmail.com&amount=0.03&currency_code=USD&item_name=Plan" class="paypal-button">Оплатити через PayPal</a>
+            </div>
+        </main>
+        <main ">
             <h2>Тарифний план</h2>
             <div>
                 <h2>Plus</h2>
-                <p>З тарифом Plus у Вас відкривається більше можливостей, таких як: необмежена кількість на редагування стану пристроїв, а також купувати через Особистий кабінет різні пристрої для управління мікрокліматом у Вашому приміщенні(поки що всім користувачам доступна безкоштовна версія без вимоги оплати)</p>
-                <p>Ціна: 0.03$(1 грн)</p>
-                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=maxim.milinevskiy@gmail.com&amount=0.03&currency_code=USD&item_name=Plan"><button type="submit"></button></a>
+                <p>З тарифом Plus у Вас відкривається більше можливостей, таких як: можливість  на редагування стану пристроїв збільшеться до 50 разів, а також відкриється доступ до нових вкладок.</p>
+                <p>Ціна: 0.05$</p>
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=maxim.milinevskiy@gmail.com&amount=0.03&currency_code=USD&item_name=Plan" class="paypal-button">Оплатити через PayPal</a>
+            </div>
+        </main>
+        <main >
+            <h2>Тарифний план</h2>
+            <div>
+                <h2>Vip</h2>
+                <p>З тарифом Vip у Вас відкривається всі можливості, такі як: необмежена кількість на редагування стану пристроїв, зміни температури, вологості та освітлення у вашому приміщенні.</p>
+                <p>Ціна: 0.1$</p>
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=maxim.milinevskiy@gmail.com&amount=0.03&currency_code=USD&item_name=Plan" class="paypal-button">Оплатити через PayPal</a>
             </div>
         </main>
     </div>

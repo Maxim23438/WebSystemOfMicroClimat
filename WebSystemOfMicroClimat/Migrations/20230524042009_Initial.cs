@@ -70,6 +70,56 @@ namespace WebSystemOfMicroClimat.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "HumTimeOffs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HumidifierOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FanOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DehydratorOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ProtectorOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    RegulatorOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    HygrometerOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HumTimeOffs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HumTimeOffs_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HumTimeOns",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HumidifierOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FanOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DehydratorOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ProtectorOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    RegulatorOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    HygrometerOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HumTimeOns", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HumTimeOns_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Lights",
                 columns: table => new
                 {
@@ -88,6 +138,56 @@ namespace WebSystemOfMicroClimat.Migrations
                     table.PrimaryKey("PK_Lights", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Lights_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LightTimeOffs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DimmerOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LampLightOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LedLampOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CurtainsOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    JalousieOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ReflectorOff = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LightTimeOffs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LightTimeOffs_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LightTimeOns",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DimmerOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LampLightOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LedLampOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CurtainsOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    JalousieOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ReflectorOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LightTimeOns", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LightTimeOns_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
@@ -201,8 +301,32 @@ namespace WebSystemOfMicroClimat.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_HumTimeOffs_UserId",
+                table: "HumTimeOffs",
+                column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HumTimeOns_UserId",
+                table: "HumTimeOns",
+                column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Lights_UserId",
                 table: "Lights",
+                column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LightTimeOffs_UserId",
+                table: "LightTimeOffs",
+                column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LightTimeOns_UserId",
+                table: "LightTimeOns",
                 column: "UserId",
                 unique: true);
 
@@ -241,7 +365,19 @@ namespace WebSystemOfMicroClimat.Migrations
                 name: "Humidities");
 
             migrationBuilder.DropTable(
+                name: "HumTimeOffs");
+
+            migrationBuilder.DropTable(
+                name: "HumTimeOns");
+
+            migrationBuilder.DropTable(
                 name: "Lights");
+
+            migrationBuilder.DropTable(
+                name: "LightTimeOffs");
+
+            migrationBuilder.DropTable(
+                name: "LightTimeOns");
 
             migrationBuilder.DropTable(
                 name: "Temps");

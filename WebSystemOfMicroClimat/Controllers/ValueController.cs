@@ -155,7 +155,11 @@ namespace WebSystemOfMicroClimat.Controllers
             ViewBag.Email = user.Email;
             var timeOn = _service.GetTimeOnById(userId);
             var timeOff = _service.GetTimeOffById(userId);
-            if(value2 != null)
+            var LtimeOn = _service.GetLTimeOnById(userId);
+            var LtimeOff = _service.GetLTimeOffById(userId);
+            var HtimeOn = _service.GetHTimeOnById(userId);
+            var HtimeOff = _service.GetHTimeOffById(userId);
+            if (value2 != null)
             {
                 ViewBag.Humidity = value2.Humidity;
                 ViewBag.Temperature = value2.Temperature;
@@ -242,6 +246,42 @@ namespace WebSystemOfMicroClimat.Controllers
                 ViewBag.KaminOff = timeOff.KaminOff;
                 ViewBag.LampOff = timeOff.LampOff;
                 ViewBag.ObigrivOff = timeOff.ObigrivOff;
+            }
+            if(LtimeOn != null)
+            {
+                ViewBag.LampLightOn = LtimeOn.LampLightOn;
+                ViewBag.LedLampOn = LtimeOn.LedLampOn;
+                ViewBag.DimmerOn = LtimeOn.DimmerOn;
+                ViewBag.JalousieOn = LtimeOn.JalousieOn;
+                ViewBag.CurtainsOn = LtimeOn.CurtainsOn;
+                ViewBag.ReflectorOn = LtimeOn.ReflectorOn;
+            }
+            if (LtimeOff != null)
+            {
+                ViewBag.LampLightOff = LtimeOff.LedLampOff;
+                ViewBag.LedLampOff = LtimeOff.LedLampOff;
+                ViewBag.DimmerOff = LtimeOff.DimmerOff;
+                ViewBag.JalousieOff = LtimeOff.JalousieOff;
+                ViewBag.CurtainsOff = LtimeOff.CurtainsOff;
+                ViewBag.ReflectorOff = LtimeOff.ReflectorOff;
+            }
+            if (HtimeOn != null)
+            {
+                ViewBag.HumidifierOn = HtimeOn.HumidifierOn;
+                ViewBag.DehydratorOn = HtimeOn.DehydratorOn;
+                ViewBag.HygrometerOn = HtimeOn.HygrometerOn;
+                ViewBag.ProtectorOn = HtimeOn.ProtectorOn;
+                ViewBag.FanOn = HtimeOn.FanOn;
+                ViewBag.RegulatorOn = HtimeOn.RegulatorOn;
+            }
+            if (HtimeOff != null)
+            {
+                ViewBag.HumidifierOff = HtimeOff.HumidifierOff;
+                ViewBag.DehydratorOff = HtimeOff.DehydratorOff;
+                ViewBag.HygrometerOff = HtimeOff.HygrometerOff;
+                ViewBag.ProtectorOff = HtimeOff.ProtectorOff;
+                ViewBag.FanOff = HtimeOff.FanOff;
+                ViewBag.RegulatorOff = HtimeOff.RegulatorOff;
             }
             return View();
         }

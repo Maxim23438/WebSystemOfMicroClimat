@@ -16,6 +16,11 @@ namespace WebSystemOfMicroClimat.Data.Services
         Value Update3(int id, Value value);
         User GetUserById(int id);
         TempTimeOn GetTimeOnById(int userId);
+        
         TempTimeOff GetTimeOffById(int userId);
+        LightTimeOff GetLTimeOffById(int userId);
+        LightTimeOn GetLTimeOnById(int userId);
+        HumTimeOn GetHTimeOnById(int userId);
+        HumTimeOff GetHTimeOffById(int userId);
     }
 }

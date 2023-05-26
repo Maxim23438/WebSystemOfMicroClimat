@@ -56,5 +56,57 @@ namespace WebSystemOfMicroClimat.Data.Services
             _context.SaveChanges();
             return value2;
         }
+
+        public HumTimeOn GetTimeOnById(int userId)
+        {
+            var value = _context.HumTimeOns.FirstOrDefault(x => x.UserId == userId);
+            return value;
+        }
+
+        public HumTimeOff GetTimeOffById(int userId)
+        {
+            var value = _context.HumTimeOffs.FirstOrDefault(x => x.UserId == userId);
+            return value;
+        }
+
+        public void AddTimeOn(HumTimeOn timeOn)
+        {
+            _context.HumTimeOns.Add(timeOn);
+            _context.SaveChanges();
+        }
+
+        public void AddTimeOff(HumTimeOff timeOff)
+        {
+            _context.HumTimeOffs.Add(timeOff);
+            _context.SaveChanges();
+        }
+
+        public HumTimeOff UpdateTimeOffById(int userId, HumTimeOff timeOff)
+        {
+            var value = _context.HumTimeOffs.FirstOrDefault(x => x.UserId == userId);
+            value.HumidifierOff = timeOff.HumidifierOff;
+            value.FanOff = timeOff.FanOff;
+            value.ProtectorOff = timeOff.ProtectorOff;
+            value.HygrometerOff = timeOff.HygrometerOff;
+            value.DehydratorOff = timeOff.DehydratorOff;
+            value.RegulatorOff = timeOff.RegulatorOff;
+            _context.Update(value);
+            _context.SaveChanges();
+            return value;
+        }
+
+        public HumTimeOn UpdateTimeOnById(int userId, HumTimeOn timeOn)
+        {
+            var value = _context.HumTimeOns.FirstOrDefault(x => x.UserId == userId);
+            value.HumidifierOn = timeOn.HumidifierOn;
+            value.FanOn = timeOn.FanOn;
+            value.ProtectorOn = timeOn.ProtectorOn;
+            value.HygrometerOn = timeOn.HygrometerOn;
+            value.DehydratorOn = timeOn.DehydratorOn;
+            value.RegulatorOn = timeOn.RegulatorOn;
+            _context.Update(value);
+            _context.SaveChanges();
+            return value;
+        }
     }
 }
