@@ -1,0 +1,40 @@
+﻿@model Review
+<link rel="stylesheet" href="~/css/TempOsvVol.css" asp-append-version="true" />
+<body class="body">
+    <nav>
+        <h1><a asp-controller="Value" asp-action="Index" id="atext">EcoComfort</a></h1>
+        <ul>
+            <li><a asp-controller="Value" asp-action="Cab">Особистий кабінет</a></li>
+            <li><a asp-controller="Value" asp-action="Plan">Тарифний план</a></li>
+            <li><a asp-controller="Temp" asp-action="Temp">Температура</a></li>
+            <li><a asp-controller="Humidity" asp-action="Humidity">Вологість</a></li>
+            <li><a asp-controller="Light" asp-action="Light">Світло</a></li>
+            <li><a asp-controller="BasePage" asp-action="Index">Вийти</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main>
+            <form asp-action="Index">
+                <label asp-for="Grade">Оцінка (від 1 до 5):</label>
+                <input asp-for="Grade" type="number" id="grade" name="Grade" min="1" max="5" required>
+                <br>
+                <label asp-for="Desc">Опишіть свої враження:</label>
+                <textarea asp-for="Desc" id="desc" name="Desc" required></textarea>
+                <br>
+                <button type="submit" value="Index">Надіслати</button>
+            </form>
+        </main>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2023 Управління мікрокліматом</p>
+        <p>
+            У випадку несправності сайту або виникнення пропозицій щодо покращення роботи сайту - використовуйте ці посилання:
+            <a href="https://t.me/maks23438">
+                <img id="Telegram" src="~/css/Telegram_X_2019_Logo.svg.png">
+            </a>
+            <a href="https://instagram.com/maks_milik?igshid=NTc4MTIwNjQ2YQ==">
+                <img id="Instagram" src="~/css/1200px-Instagram.svg.png">
+            </a>
+        </p>
+    </footer>
+</body>

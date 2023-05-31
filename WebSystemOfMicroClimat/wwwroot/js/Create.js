@@ -1,26 +1,30 @@
-// отримуємо всі checkbox-и з атрибутом name="house"
-const checkboxes = document.querySelectorAll('input[name="house"]');
-
-// обробник події при зміні стану checkbox-ів
-function onCheckboxChange() {
-    // перевіряємо, який checkbox був змінений
-    const currentCheckbox = this;
-
-    // якщо цей checkbox вже був вибраний, то знімаємо вибір з усіх checkbox-ів
-    if (currentCheckbox.checked) {
-        checkboxes.forEach((checkbox) => {
-            if (checkbox !== currentCheckbox) {
-                checkbox.checked = false;
-                checkbox.value = "Nope"; // змінюємо значення в checkbox на "Nope"
+var checkboxes = document.getElementsByClassName("exclusive");
+for (var i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].addEventListener('click', function () {
+        for (var j = 0; j < checkboxes.length; j++) {
+            if (checkboxes[j] != this) {
+                checkboxes[j].checked = false;
             }
-        });
-        currentCheckbox.value = "Yeap"; // змінюємо значення в поточному checkbox на "Yeap"
-    } else {
-        currentCheckbox.value = "Nope"; // якщо checkbox не вибраний, змінюємо значення на "Nope"
-    }
+        }
+    });
 }
 
-//// додаємо обробник події для кожного checkbox-а
-//checkboxes.forEach((checkbox) => {
-//    checkbox.addEventListener('change', onCheckboxChange);
-//});
+document.getElementById('email').addEventListener('input', function () {
+    var emailInput = document.getElementById('email');
+    var errorSpan = document.getElementById('email-error');
+    var email = emailInput.value.trim();
+
+    if (!validateEmail(email)) {
+        errorSpan.textContent = 'Введіть дійсну адресу електронної пошти.';
+        emailInput.classList.add('invalid');
+    } else {
+        errorSpan.textContent = '';
+        emailInput.classList.remove('invalid');
+    }
+});
+
+function validateEmail(email) {
+    // Використовуйте регулярний вираз для перевірки формату адреси електронної пошти
+    var emailRegex = /^\S+@\S+\.\S+$/;
+    return emailRegex.test(email);
+}

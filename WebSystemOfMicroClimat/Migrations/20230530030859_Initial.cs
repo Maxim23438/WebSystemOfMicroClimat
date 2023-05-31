@@ -195,6 +195,27 @@ namespace WebSystemOfMicroClimat.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Grade = table.Column<int>(type: "int", nullable: false),
+                    Desc = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reviews", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reviews_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Temps",
                 columns: table => new
                 {
@@ -331,6 +352,11 @@ namespace WebSystemOfMicroClimat.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Reviews_UserId",
+                table: "Reviews",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Temps_UserId",
                 table: "Temps",
                 column: "UserId",
@@ -378,6 +404,9 @@ namespace WebSystemOfMicroClimat.Migrations
 
             migrationBuilder.DropTable(
                 name: "LightTimeOns");
+
+            migrationBuilder.DropTable(
+                name: "Reviews");
 
             migrationBuilder.DropTable(
                 name: "Temps");

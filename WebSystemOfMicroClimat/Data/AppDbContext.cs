@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 using WebSystemOfMicroClimat.Models;
 
 namespace WebSystemOfMicroClimat.Data
@@ -61,6 +62,11 @@ namespace WebSystemOfMicroClimat.Data
            .WithOne(e => e.HumTimeOn)
               .HasForeignKey<HumTimeOn>(e => e.UserId);
 
+            builder.Entity<Review>()
+            .HasOne(r => r.User)
+            .WithMany(u => u.Reviews)
+            .HasForeignKey(r => r.UserId);
+
             builder.Entity<Admin>();
             base.OnModelCreating(builder);
             
@@ -77,5 +83,6 @@ namespace WebSystemOfMicroClimat.Data
         public DbSet<LightTimeOff> LightTimeOffs { get; set; }
         public DbSet<HumTimeOn> HumTimeOns { get; set; }
         public DbSet<HumTimeOff> HumTimeOffs { get; set; }
+        public DbSet<Review> Reviews { get; set; }
     }
 }

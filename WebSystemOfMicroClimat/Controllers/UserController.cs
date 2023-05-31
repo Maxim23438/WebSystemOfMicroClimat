@@ -14,9 +14,11 @@ namespace WebSystemOfMicroClimat.Controllers
     public class UserController : Controller
     {
         private readonly IUsersService _service;
-        public UserController(IUsersService service)
+        private readonly IEmailService _emailService;
+        public UserController(IUsersService service, IEmailService emailService)
         {
             _service = service;
+            _emailService = emailService;
         }
 
         public async Task<IActionResult> Index()
@@ -70,6 +72,7 @@ namespace WebSystemOfMicroClimat.Controllers
             }
             if (user2 == null && user3 == null)
             {
+                _emailService.SendEmail(user.Email, "Реєстрація успішна", "Ви успішно зареєструвалися на нашому сайті.");
                 _service.Add(user);
                 TempData["userId"] = user.UserId;
                 return RedirectToAction("Index", "Value", new { userId = user.UserId });
@@ -85,6 +88,7 @@ namespace WebSystemOfMicroClimat.Controllers
         public async Task<IActionResult> Login([Bind("Name,Password")] User user)
         {
             var user2 = _service.GetUser(user.Name);
+            TempData["Name"] = user2.Name;
             var md5 = MD5.Create();
             byte[] hashedBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(user.Password));
             StringBuilder sb = new StringBuilder();
@@ -158,6 +162,35 @@ namespace WebSystemOfMicroClimat.Controllers
                 return View(value2);
             }
 
+        }
+        public IActionResult Password()
+        {
+            string name = (string)TempData["Name"];
+            Console.WriteLine(name);
+            TempData["Name"] = name; 
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Password([Bind("Password")] User user)
+        {
+            string name = (string)TempData["Name"];
+            Console.WriteLine(name);
+            var user2 = _service.GetUser(name);
+            if (user2 != null)
+            {
+                var md5 = MD5.Create();
+                byte[] hashedBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(user.Password));
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashedBytes.Length; i++)
+                {
+                    sb.Append(hashedBytes[i].ToString("x2"));
+                }
+                user2.Password = sb.ToString();
+                TempData["userId"] = user2.UserId;
+                _service.Update(user2.UserId, user);
+                return RedirectToAction("Index", "Value", new { userId = user2.UserId });
+            }
+            return View();
         }
     }
 }

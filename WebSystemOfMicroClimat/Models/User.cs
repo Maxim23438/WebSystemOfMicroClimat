@@ -23,6 +23,7 @@ namespace WebSystemOfMicroClimat.Models
         public LightTimeOff? LightTimeOff { get; set; }
         public HumTimeOn? HumTimeOn { get; set; }
         public HumTimeOff? HumTimeOff { get; set; }
+        public ICollection<Review>? Reviews { get; set; }
         public bool IsPayment { get; set; }
     }
 }

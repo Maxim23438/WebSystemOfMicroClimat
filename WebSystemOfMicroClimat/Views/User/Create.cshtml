@@ -9,8 +9,9 @@
             <label asp-for="Name">Логін</label>
         </div>
         <div class="user-box">
-            <input asp-for="Email" type="text" name="email" id="email" required="">
+            <input asp-for="Email" type="email" name="email" id="email" required="">
             <label asp-for="Email">Електрона пошта</label>
+            <span id="email-error" class="text-danger"></span>
         </div>
         <div class="user-box">
             <input asp-for="Password" type="password" name="password" id="password" required="">
@@ -52,16 +53,6 @@
 </div>
 
 
-<script>
-    var checkboxes = document.getElementsByClassName("exclusive");
-    for (var i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].addEventListener('click', function () {
-            for (var j = 0; j < checkboxes.length; j++) {
-                if (checkboxes[j] != this) {
-                    checkboxes[j].checked = false;
-                }
-            }
-        });
-    }
+<script src="/js/Create.js">
 </script>
 

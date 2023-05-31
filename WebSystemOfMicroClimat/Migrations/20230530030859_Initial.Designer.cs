@@ -12,7 +12,7 @@ using WebSystemOfMicroClimat.Data;
 namespace WebSystemOfMicroClimat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230524042009_Initial")]
+    [Migration("20230530030859_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -268,6 +268,31 @@ namespace WebSystemOfMicroClimat.Migrations
                     b.ToTable("LightTimeOns");
                 });
 
+            modelBuilder.Entity("WebSystemOfMicroClimat.Models.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Desc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Grade")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Reviews");
+                });
+
             modelBuilder.Entity("WebSystemOfMicroClimat.Models.Temp", b =>
                 {
                     b.Property<int>("Id")
@@ -519,6 +544,17 @@ namespace WebSystemOfMicroClimat.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("WebSystemOfMicroClimat.Models.Review", b =>
+                {
+                    b.HasOne("WebSystemOfMicroClimat.Models.User", "User")
+                        .WithMany("Reviews")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("WebSystemOfMicroClimat.Models.Temp", b =>
                 {
                     b.HasOne("WebSystemOfMicroClimat.Models.User", "User")
@@ -576,6 +612,8 @@ namespace WebSystemOfMicroClimat.Migrations
                     b.Navigation("LightTimeOff");
 
                     b.Navigation("LightTimeOn");
+
+                    b.Navigation("Reviews");
 
                     b.Navigation("Temp");
 
