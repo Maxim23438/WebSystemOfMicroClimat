@@ -88,7 +88,6 @@ namespace WebSystemOfMicroClimat.Controllers
         public async Task<IActionResult> Login([Bind("Name,Password")] User user)
         {
             var user2 = _service.GetUser(user.Name);
-            TempData["Name"] = user2.Name;
             var md5 = MD5.Create();
             byte[] hashedBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(user.Password));
             StringBuilder sb = new StringBuilder();
@@ -165,17 +164,12 @@ namespace WebSystemOfMicroClimat.Controllers
         }
         public IActionResult Password()
         {
-            string name = (string)TempData["Name"];
-            Console.WriteLine(name);
-            TempData["Name"] = name; 
             return View();
         }
         [HttpPost]
-        public IActionResult Password([Bind("Password")] User user)
+        public async Task<IActionResult> Password([Bind("Name,Password")] User user)
         {
-            string name = (string)TempData["Name"];
-            Console.WriteLine(name);
-            var user2 = _service.GetUser(name);
+            var user2 = _service.GetUser(user.Name);
             if (user2 != null)
             {
                 var md5 = MD5.Create();
@@ -187,7 +181,7 @@ namespace WebSystemOfMicroClimat.Controllers
                 }
                 user2.Password = sb.ToString();
                 TempData["userId"] = user2.UserId;
-                _service.Update(user2.UserId, user);
+                _service.Update(user2.UserId, user2);
                 return RedirectToAction("Index", "Value", new { userId = user2.UserId });
             }
             return View();

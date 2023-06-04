@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<Review>
-<link rel="stylesheet" href="~/css/AdminPanel.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/Reviews.css" asp-append-version="true" />
 <style>
     table {
         border-collapse: collapse;
@@ -15,12 +15,7 @@
     <nav>
         <h1><a asp-controller="Value" asp-action="Index" id="atext">EcoComfort</a></h1>
         <ul>
-            <li><a asp-controller="Value" asp-action="Cab">Особистий кабінет</a></li>
-            <li><a asp-controller="Value" asp-action="Plan">Тарифний план</a></li>
-            <li><a asp-controller="Temp" asp-action="Temp">Температура</a></li>
-            <li><a asp-controller="Humidity" asp-action="Humidity">Вологість</a></li>
-            <li><a asp-controller="Light" asp-action="Light">Світло</a></li>
-            <li><a asp-controller="BasePage" asp-action="Index">Вийти</a></li>
+            <li><a asp-controller="BasePage" asp-action="Index">На головну</a></li>
         </ul>
     </nav>
     <div class="container">
@@ -28,9 +23,7 @@
         {
             <main>
                 <p>@review.User.Name</p>
-                <br>
                 <p>@review.Grade</p>
-                <br>
                 <p>@review.Desc</p>
             </main>
         }   

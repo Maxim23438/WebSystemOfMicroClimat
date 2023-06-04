@@ -53,7 +53,7 @@ app.MapControllerRoute(
 var scp = app.Services.CreateScope();
 
 var db = scp.ServiceProvider.GetRequiredService<AppDbContext>();
-//db.Database.Migrate();
+db.Database.Migrate();
 
-new ArduinoService("https://dweet.io:443/get/latest/dweet/for/NULP",1000,db).Start();
+//new ArduinoService("https://dweet.io:443/get/latest/dweet/for/NULP",1000,db).Start();
 app.Run();
