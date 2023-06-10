@@ -10,6 +10,13 @@
         padding: 10px;
         text-align: center;
     }
+    .filled-star {
+        color: gold; /* Колір заповнених зірок */
+    }
+
+    .empty-star {
+        color: lightgray; /* Колір незаповнених зірок */
+    }
 </style>
 <body class="body">
     <nav>
@@ -18,15 +25,25 @@
             <li><a asp-controller="BasePage" asp-action="Index">На головну</a></li>
         </ul>
     </nav>
-    <div class="container">
-        @foreach (var review in Model)
-        {
-            <main>
-                <p>@review.User.Name</p>
-                <p>@review.Grade</p>
-                <p>@review.Desc</p>
-            </main>
-        }   
+    <div class="container99">
+        <div class="reviews-container">
+            <div class="reviews-list">
+                @foreach (var review in Model)
+                {
+                    <p style="text-align: left; margin-left: 10px;">@review.User.Name</p>
+                    @for (int i = 0; i < review.Grade; i++)
+                    {
+                        <span class="filled-star">&#9733;</span>
+                    }
+                    @for (int i = review.Grade; i < 5; i++)
+                    {
+                        <span class="empty-star">&#9733;</span>
+                    }
+                    <p style="text-align: left; margin-left: 10px;">@review.Desc</p>
+                    <hr class="line" />
+                }
+            </div>
+        </div>
     </div>
     <footer class="footer">
         <p>&copy; 2023 Управління мікрокліматом</p>
